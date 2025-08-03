@@ -1,0 +1,160 @@
+{
+  "app": {
+    "title": "軽井サーチ",
+    "subtitle": "Karui-Search",
+    "description": "軽井沢不動産検索システム"
+  },
+  "navigation": {
+    "home": "ホーム",
+    "weekly": "今週の新着",
+    "listings": "全物件一覧",
+    "reports": "週間レポート",
+    "language": "言語",
+    "menu": "メニュー"
+  },
+  "common": {
+    "search": "検索",
+    "filter": "フィルター",
+    "sort": "並び順",
+    "clear": "クリア",
+    "apply": "適用",
+    "close": "閉じる",
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "retry": "再試行",
+    "noData": "データがありません",
+    "showMore": "もっと見る",
+    "viewDetails": "詳細を見る",
+    "viewOriginal": "元サイトを見る",
+    "favorite": "お気に入り",
+    "share": "共有"
+  },
+  "property": {
+    "title": "物件名",
+    "price": "価格",
+    "location": "所在地",
+    "type": "物件種別",
+    "size": "面積",
+    "age": "築年数",
+    "rooms": "間取り",
+    "description": "物件説明",
+    "images": "写真",
+    "source": "情報提供",
+    "dateAdded": "掲載日",
+    "lastUpdated": "更新日",
+    "priceChange": "価格変動",
+    "newListing": "新着",
+    "featured": "おすすめ"
+  },
+  "propertyTypes": {
+    "house": "一戸建て",
+    "apartment": "マンション",
+    "land": "土地",
+    "vacation": "別荘",
+    "all": "全て"
+  },
+  "areas": {
+    "oldKaruizawa": "旧軽井沢",
+    "newKaruizawa": "新軽井沢",
+    "nakaKaruizawa": "中軽井沢",
+    "minamiKaruizawa": "南軽井沢",
+    "oiwake": "追分",
+    "nagakura": "長倉",
+    "hatchi": "発地"
+  },
+  "buildingAge": {
+    "new": "新築",
+    "recent": "築浅",
+    "established": "築10年以内",
+    "older": "築10年以上"
+  },
+  "filters": {
+    "title": "検索・フィルター",
+    "propertyType": "物件種別",
+    "priceRange": "価格帯",
+    "area": "エリア",
+    "buildingAge": "築年数",
+    "landSize": "敷地面積",
+    "keyword": "キーワード",
+    "hasImages": "写真あり",
+    "clear": "フィルターをクリア",
+    "apply": "検索"
+  },
+  "sort": {
+    "dateDesc": "追加日順（新しい順）",
+    "dateAsc": "追加日順（古い順）",
+    "priceAsc": "価格安い順",
+    "priceDesc": "価格高い順",
+    "sizeDesc": "面積大きい順",
+    "sizeAsc": "面積小さい順"
+  },
+  "weekly": {
+    "title": "今週の新着物件",
+    "subtitle": "週間新着物件レポート",
+    "newProperties": "新着物件",
+    "priceIncreases": "値上がり",
+    "priceDecreases": "値下がり",
+    "summary": "今週の集計",
+    "period": "対象期間",
+    "lastWeek": "先週",
+    "nextWeek": "来週",
+    "thisWeek": "今週",
+    "noNewProperties": "今週新着物件はありません"
+  },
+  "listings": {
+    "title": "全物件一覧",
+    "subtitle": "軽井沢の物件データベース",
+    "totalProperties": "全{{count}}件",
+    "updated": "更新",
+    "showingResults": "{{total}}件中 {{start}}-{{end}}件を表示",
+    "noResults": "条件に合う物件が見つかりません",
+    "refineSearch": "検索条件を変更してお試しください"
+  },
+  "propertyDetail": {
+    "title": "物件詳細",
+    "basicInfo": "基本情報",
+    "detailInfo": "詳細情報",
+    "description": "物件説明",
+    "access": "アクセス",
+    "surroundings": "周辺情報",
+    "priceHistory": "価格履歴",
+    "contact": "お問い合わせ",
+    "related": "類似物件",
+    "gallery": "フォトギャラリー",
+    "floorPlan": "間取り図",
+    "streetView": "ストリートビュー"
+  },
+  "units": {
+    "yen": "円",
+    "manYen": "万円",
+    "okuYen": "億円",
+    "sqm": "㎡",
+    "tsubo": "坪",
+    "years": "年",
+    "minutes": "分",
+    "minutesWalk": "分（徒歩）",
+    "minutesDrive": "分（車）"
+  },
+  "priceChange": {
+    "increase": "値上がり",
+    "decrease": "値下がり",
+    "noChange": "価格変更なし",
+    "since": "{{date}}より",
+    "amount": "{{amount}}",
+    "percentage": "{{percentage}}"
+  },
+  "error": {
+    "general": "エラーが発生しました",
+    "network": "ネットワークエラーです",
+    "notFound": "ページが見つかりません",
+    "serverError": "サーバーエラーです",
+    "tryAgain": "もう一度お試しください",
+    "goHome": "ホームに戻る"
+  },
+  "loading": {
+    "properties": "物件情報を読み込み中...",
+    "images": "画像を読み込み中...",
+    "details": "詳細情報を取得中...",
+    "search": "検索中..."
+  }
+}

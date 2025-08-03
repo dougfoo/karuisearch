@@ -1,0 +1,58 @@
+[
+  {
+    "id": "royal_resort",
+    "name": "Royal Resort Karuizawa",
+    "base_url": "https://www.royal-resort.co.jp",
+    "display_name": "Royal Resort",
+    "is_active": true
+  },
+  {
+    "id": "besso_navi",
+    "name": "Besso Navi",
+    "base_url": "https://www.besso-navi.com",
+    "display_name": "Besso Navi",
+    "is_active": true
+  },
+  {
+    "id": "mitsui_no_mori",
+    "name": "Mitsui no Mori Karuizawa",
+    "base_url": "https://www.mitsuinomori.co.jp",
+    "display_name": "Mitsui no Mori",
+    "is_active": true
+  },
+  {
+    "id": "resort_innovation",
+    "name": "Resort Innovation",
+    "base_url": "https://www.resortinnovation.com",
+    "display_name": "Resort Innovation",
+    "is_active": true
+  },
+  {
+    "id": "tokyu_resort",
+    "name": "Tokyu Resort Karuizawa",
+    "base_url": "https://www.tokyu-resort.co.jp",
+    "display_name": "Tokyu Resort",
+    "is_active": true
+  },
+  {
+    "id": "resort_home",
+    "name": "Resort Home",
+    "base_url": "https://www.resort-home.jp",
+    "display_name": "Resort Home",
+    "is_active": true
+  },
+  {
+    "id": "seibu_resort",
+    "name": "Seibu Real Estate Karuizawa",
+    "base_url": "https://resort.seiburealestate-pm.co.jp",
+    "display_name": "Seibu Resort",
+    "is_active": true
+  },
+  {
+    "id": "suumo",
+    "name": "SUUMO",
+    "base_url": "https://suumo.jp",
+    "display_name": "SUUMO",
+    "is_active": true
+  }
+]

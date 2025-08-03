@@ -1,0 +1,160 @@
+{
+  "app": {
+    "title": "Karui-Search",
+    "subtitle": "軽井サーチ",
+    "description": "Karuizawa Real Estate Search System"
+  },
+  "navigation": {
+    "home": "Home",
+    "weekly": "This Week's New",
+    "listings": "All Listings",
+    "reports": "Weekly Reports",
+    "language": "Language",
+    "menu": "Menu"
+  },
+  "common": {
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "clear": "Clear",
+    "apply": "Apply",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "noData": "No data available",
+    "showMore": "Show More",
+    "viewDetails": "View Details",
+    "viewOriginal": "View Original",
+    "favorite": "Favorite",
+    "share": "Share"
+  },
+  "property": {
+    "title": "Property Name",
+    "price": "Price",
+    "location": "Location",
+    "type": "Property Type",
+    "size": "Size",
+    "age": "Building Age",
+    "rooms": "Layout",
+    "description": "Description",
+    "images": "Photos",
+    "source": "Source",
+    "dateAdded": "Date Added",
+    "lastUpdated": "Last Updated",
+    "priceChange": "Price Change",
+    "newListing": "New",
+    "featured": "Featured"
+  },
+  "propertyTypes": {
+    "house": "Single-Family House",
+    "apartment": "Apartment/Condo",
+    "land": "Land",
+    "vacation": "Vacation Home",
+    "all": "All"
+  },
+  "areas": {
+    "oldKaruizawa": "Old Karuizawa",
+    "newKaruizawa": "New Karuizawa",
+    "nakaKaruizawa": "Central Karuizawa",
+    "minamiKaruizawa": "South Karuizawa",
+    "oiwake": "Oiwake",
+    "nagakura": "Nagakura",
+    "hatchi": "Hatchi"
+  },
+  "buildingAge": {
+    "new": "New Construction",
+    "recent": "Recently Built",
+    "established": "Under 10 Years",
+    "older": "Over 10 Years"
+  },
+  "filters": {
+    "title": "Search & Filter",
+    "propertyType": "Property Type",
+    "priceRange": "Price Range",
+    "area": "Area",
+    "buildingAge": "Building Age",
+    "landSize": "Land Size",
+    "keyword": "Keyword",
+    "hasImages": "Has Photos",
+    "clear": "Clear Filters",
+    "apply": "Search"
+  },
+  "sort": {
+    "dateDesc": "Date Added (Newest)",
+    "dateAsc": "Date Added (Oldest)",
+    "priceAsc": "Price (Low to High)",
+    "priceDesc": "Price (High to Low)",
+    "sizeDesc": "Size (Large to Small)",
+    "sizeAsc": "Size (Small to Large)"
+  },
+  "weekly": {
+    "title": "This Week's New Properties",
+    "subtitle": "Weekly New Property Report",
+    "newProperties": "New Properties",
+    "priceIncreases": "Price Increases",
+    "priceDecreases": "Price Decreases",
+    "summary": "This Week's Summary",
+    "period": "Period",
+    "lastWeek": "Last Week",
+    "nextWeek": "Next Week",
+    "thisWeek": "This Week",
+    "noNewProperties": "No new properties this week"
+  },
+  "listings": {
+    "title": "All Property Listings",
+    "subtitle": "Karuizawa Property Database",
+    "totalProperties": "Total {{count}} properties",
+    "updated": "Updated",
+    "showingResults": "Showing {{start}}-{{end}} of {{total}} results",
+    "noResults": "No properties match your criteria",
+    "refineSearch": "Please try adjusting your search criteria"
+  },
+  "propertyDetail": {
+    "title": "Property Details",
+    "basicInfo": "Basic Information",
+    "detailInfo": "Detailed Information",
+    "description": "Description",
+    "access": "Access",
+    "surroundings": "Surroundings",
+    "priceHistory": "Price History",
+    "contact": "Contact",
+    "related": "Similar Properties",
+    "gallery": "Photo Gallery",
+    "floorPlan": "Floor Plan",
+    "streetView": "Street View"
+  },
+  "units": {
+    "yen": "yen",
+    "manYen": "million yen",
+    "okuYen": "hundred million yen",
+    "sqm": " sqm",
+    "tsubo": " tsubo",
+    "years": " years old",
+    "minutes": " min",
+    "minutesWalk": " min walk",
+    "minutesDrive": " min drive"
+  },
+  "priceChange": {
+    "increase": "Price Increase",
+    "decrease": "Price Decrease",
+    "noChange": "No Price Change",
+    "since": "since {{date}}",
+    "amount": "{{amount}}",
+    "percentage": "{{percentage}}"
+  },
+  "error": {
+    "general": "An error occurred",
+    "network": "Network error",
+    "notFound": "Page not found",
+    "serverError": "Server error",
+    "tryAgain": "Please try again",
+    "goHome": "Go to Home"
+  },
+  "loading": {
+    "properties": "Loading properties...",
+    "images": "Loading images...",
+    "details": "Loading details...",
+    "search": "Searching..."
+  }
+}
