@@ -1,0 +1,139 @@
+# Karui-Search Python Dependencies
+
+# Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Database
+sqlalchemy==2.0.23
+alembic==1.12.1
+psycopg2-binary==2.9.9  # PostgreSQL adapter
+sqlite3  # Built-in with Python
+
+# Enhanced Web Scraping with Anti-Detection
+requests==2.31.0
+beautifulsoup4==4.12.2
+scrapy==2.11.0
+selenium==4.15.2
+undetected-chromedriver==3.5.4  # Advanced Chrome automation
+lxml==4.9.3
+html5lib==1.1
+
+# Browser Automation and Anti-Detection
+playwright==1.40.0  # Alternative to Selenium
+requests-html==0.10.0  # JavaScript rendering
+fake-useragent==1.4.0  # User agent rotation
+browser-cookie3==0.19.1  # Cookie management
+
+# Data Processing
+pandas==2.1.3
+numpy==1.25.2
+python-dateutil==2.8.2
+
+# Image Processing
+pillow==10.1.0
+requests-cache==1.1.1
+
+# Configuration Management
+pyyaml==6.0.1
+python-dotenv==1.0.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Scheduling and Background Tasks
+apscheduler==3.10.4
+celery==5.3.4
+redis==5.0.1  # For Celery broker
+
+# HTTP Client Enhancements
+httpx==0.25.2
+aiohttp==3.9.1
+fake-useragent==1.4.0
+
+# Data Validation and Serialization
+marshmallow==3.20.1
+cerberus==1.3.5
+
+# Logging and Monitoring
+loguru==0.7.2
+sentry-sdk[fastapi]==1.38.0
+prometheus-client==0.19.0
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+httpx==0.25.2  # For testing FastAPI
+factory-boy==3.3.0
+
+# Development Tools
+black==23.11.0
+flake8==6.1.0
+isort==5.12.0
+mypy==1.7.1
+pre-commit==3.6.0
+
+# Documentation
+mkdocs==1.5.3
+mkdocs-material==9.4.8
+
+# Utility Libraries
+click==8.1.7  # CLI interface
+rich==13.7.0  # Rich text and beautiful formatting
+python-slugify==8.0.1
+python-multipart==0.0.6  # File uploads
+email-validator==2.1.0
+
+# Security
+cryptography==41.0.8
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+
+# Internationalization
+babel==2.13.1
+
+# File Handling
+python-magic==0.4.27  # File type detection
+pathlib2==2.3.7
+
+# Caching
+redis==5.0.1
+diskcache==5.6.3
+
+# Rate Limiting
+slowapi==0.1.9
+
+# Environment and Process Management
+python-dotenv==1.0.0
+psutil==5.9.6
+
+# JSON and Data Handling
+orjson==3.9.10  # Fast JSON library
+jsonschema==4.20.0
+
+# Async Support
+asyncio
+aiofiles==23.2.0
+httpx==0.25.2
+
+# Fuzzy String Matching (for duplicate detection)
+fuzzywuzzy==0.18.0
+python-levenshtein==0.23.0
+
+# Geographic Data
+geopy==2.4.0
+
+# Excel/CSV Export
+openpyxl==3.1.2
+xlsxwriter==3.1.9
+
+# PDF Generation (for reports)
+reportlab==4.0.7
+weasyprint==60.2
+
+# Email Support
+fastapi-mail==1.4.1
+jinja2==3.1.2
+
+# API Documentation
+python-multipart==0.0.6

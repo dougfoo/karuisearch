@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.royal-resort.co.jp)",
+      "WebFetch(domain:www.besso-navi.com)",
+      "WebFetch(domain:www.mitsuinomori.co.jp)"
+    ],
+    "deny": []
+  }
+}

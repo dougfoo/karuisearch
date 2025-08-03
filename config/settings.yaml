@@ -1,0 +1,345 @@
+# Karui-Search Configuration
+
+# Application Settings
+app:
+  name: "Karui-Search"
+  version: "1.0.0"
+  debug: true
+  host: "localhost"
+  port: 8000
+  timezone: "Asia/Tokyo"
+
+# Database Configuration
+database:
+  # Development
+  development:
+    type: "sqlite"
+    path: "database/karuisearch.db"
+    echo: false
+  
+  # Production
+  production:
+    type: "postgresql"
+    host: "localhost"
+    port: 5432
+    name: "karuisearch"
+    user: "karuisearch_user"
+    password: "${DATABASE_PASSWORD}"
+    pool_size: 10
+    max_overflow: 20
+
+# Enhanced Ethical Web Scraping Configuration
+scraping:
+  # Global scraping settings
+  global:
+    default_delay: 3              # minimum 3 seconds between requests
+    timeout: 30                   # request timeout in seconds
+    retries: 3                    # number of retries for failed requests
+    respect_robots_txt: true      # always check robots.txt
+    max_requests_per_hour: 80     # conservative hourly limit per site
+    active_hours: [9, 18]         # only scrape 9 AM - 6 PM JST
+    
+  # Browser-like headers configuration
+  headers:
+    # Standard browser headers (always included)
+    base_headers:
+      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+      Accept-Language: "ja,en-US;q=0.7,en;q=0.3"
+      Accept-Encoding: "gzip, deflate, br"
+      DNT: "1"
+      Connection: "keep-alive"
+      Upgrade-Insecure-Requests: "1"
+      Sec-Fetch-Dest: "document"
+      Sec-Fetch-Mode: "navigate"
+      Sec-Fetch-Site: "none"
+      Cache-Control: "max-age=0"
+    
+    # Rotating user agent pool (modern browsers only)
+    user_agents:
+      - "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      - "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0"
+      - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15"
+      - "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    
+    # Viewport and device simulation
+    viewport_headers:
+      - {"sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"", "sec-ch-ua-mobile": "?0", "sec-ch-ua-platform": "\"Windows\""}
+      - {"sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"", "sec-ch-ua-mobile": "?0", "sec-ch-ua-platform": "\"macOS\""}
+      - {"sec-ch-ua": "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\"", "sec-ch-ua-mobile": "?0", "sec-ch-ua-platform": "\"Linux\""}
+  
+  # Conservative rate limiting per site
+  rate_limits:
+    royal_resort: 0.33            # 1 request every 3 seconds
+    besso_navi: 0.5               # 1 request every 2 seconds
+    mitsui_no_mori: 0.25          # 1 request every 4 seconds (premium site)
+    resort_innovation: 0.33       # 1 request every 3 seconds
+    tokyu_resort: 0.33            # 1 request every 3 seconds
+    resort_home: 0.5              # 1 request every 2 seconds
+    seibu_resort: 0.5             # 1 request every 2 seconds
+    suumo: 0.33                   # 1 request every 3 seconds (large site)
+    default: 0.33                 # default: 1 request every 3 seconds
+    
+  # Random delay configuration
+  delays:
+    base_delay: 3                 # base delay in seconds
+    random_range: [1, 2]          # additional random delay ±1-2 seconds
+    page_transition: [2, 5]       # delay between page transitions
+    session_break: [300, 600]     # break between scraping sessions (5-10 min)
+    
+  # Human-like browsing behavior
+  browsing_behavior:
+    start_from_homepage: true     # always begin from site homepage
+    follow_natural_navigation: true  # follow site's intended navigation flow
+    session_duration: [300, 900]  # realistic session length (5-15 min)
+    pages_per_session: [5, 20]    # realistic pages viewed per session
+    scroll_simulation: true       # simulate scrolling on JS-heavy sites
+    referrer_tracking: true       # send appropriate referrer headers
+    
+  # Error handling and circuit breaker
+  error_handling:
+    max_consecutive_errors: 3     # stop after 3 consecutive errors
+    error_rate_threshold: 0.1     # stop if error rate >10%
+    backoff_multiplier: 2         # exponential backoff multiplier
+    max_backoff_delay: 300        # maximum backoff delay (5 minutes)
+    circuit_breaker_reset: 3600   # reset circuit breaker after 1 hour
+    
+  # Compliance monitoring
+  compliance:
+    robots_txt_check_interval: 604800  # check robots.txt weekly (seconds)
+    success_rate_threshold: 0.9       # alert if success rate <90%
+    response_time_threshold: 10       # alert if avg response time >10s
+    daily_request_limit: 500          # maximum requests per day per site
+    
+  # Scraping schedule (adjusted for ethical scraping)
+  schedule:
+    daily_scrape: "0 10 * * *"     # 10 AM daily (business hours)
+    weekly_report: "0 20 * * 0"    # 8 PM every Sunday
+    cleanup: "0 2 * * 1"           # 2 AM every Monday
+    robots_check: "0 3 * * 1"      # Check robots.txt every Monday 3 AM
+
+# Target Websites Configuration (Updated Priorities)
+targets:
+  royal_resort:
+    enabled: true
+    name: "Royal Resort Karuizawa"
+    base_url: "https://www.royal-resort.co.jp"
+    search_path: "/karuizawa/"
+    rate_limit: 0.33  # 1 request every 3 seconds
+    priority: 1
+    
+  besso_navi:
+    enabled: true
+    name: "Besso Navi"
+    base_url: "https://www.besso-navi.com"
+    search_path: "/b-search"
+    rate_limit: 0.5   # 1 request every 2 seconds
+    priority: 2
+    
+  mitsui_no_mori:
+    enabled: true
+    name: "Mitsui no Mori Karuizawa"
+    base_url: "https://www.mitsuinomori.co.jp"
+    search_path: "/karuizawa/"
+    rate_limit: 0.25  # 1 request every 4 seconds (premium site)
+    priority: 3
+    
+  resort_innovation:
+    enabled: true
+    name: "Resort Innovation"
+    base_url: "https://www.resortinnovation.com"
+    search_path: "/for-sale.html"
+    rate_limit: 0.33  # 1 request every 3 seconds
+    priority: 4
+    
+  tokyu_resort:
+    enabled: true
+    name: "Tokyu Resort Karuizawa"
+    base_url: "https://www.tokyu-resort.co.jp"
+    search_path: "/karuizawa/"
+    rate_limit: 0.33  # 1 request every 3 seconds
+    priority: 5
+    
+  resort_home:
+    enabled: true
+    name: "Resort Home"
+    base_url: "https://www.resort-home.jp"
+    search_path: "/"
+    rate_limit: 0.5   # 1 request every 2 seconds
+    priority: 6
+    
+  seibu_resort:
+    enabled: true
+    name: "Seibu Real Estate Karuizawa"
+    base_url: "https://resort.seiburealestate-pm.co.jp"
+    search_path: "/karuizawa/property/list/"
+    rate_limit: 0.5   # 1 request every 2 seconds
+    priority: 7
+    
+  suumo:
+    enabled: true
+    name: "SUUMO"
+    base_url: "https://suumo.jp"
+    search_path: "/jj/bukken/ichiran/JJ012FC001/"
+    rate_limit: 0.33  # 1 request every 3 seconds
+    priority: 8
+
+# Search Parameters
+search:
+  location_keywords:
+    - "軽井沢"
+    - "karuizawa"
+    - "北佐久郡軽井沢町"
+    
+  property_types:
+    - "house"      # 一戸建て
+    - "apartment"  # マンション
+    - "land"       # 土地
+    - "vacation"   # 別荘
+    
+  price_range:
+    min: 1000000      # ¥1,000,000
+    max: 1000000000   # ¥1,000,000,000
+    
+  size_range:
+    min_land: 100     # 100 sqm
+    max_land: 10000   # 10,000 sqm
+
+# Data Processing Configuration
+processing:
+  # Image handling
+  images:
+    download: true
+    max_size_mb: 10
+    formats: ["jpg", "jpeg", "png", "webp"]
+    storage_path: "data/images"
+    
+  # Duplicate detection
+  deduplication:
+    similarity_threshold: 0.8
+    fields_to_compare: ["title", "price", "location", "size_land"]
+    
+  # Data validation (V1 - Simplified)
+  validation:
+    required_fields: ["title", "price", "location", "source_url", "scraped_date"]
+    location_keywords: ["軽井沢", "karuizawa", "Karuizawa"]  # must contain one of these
+    price_range:
+      min: 1000000      # ¥1,000,000 (1 million yen)
+      max: 500000000    # ¥500,000,000 (500 million yen)
+    max_images: 5                    # limit image collection
+    max_description_length: 2000     # truncate long descriptions
+
+# Frontend Configuration
+frontend:
+  title: "Karui-Search | 軽井サーチ"
+  description: "Karuizawa Real Estate Aggregator"
+  theme:
+    primary_color: "#1976d2"
+    secondary_color: "#dc004e"
+    
+  # Material-UI configuration
+  mui:
+    theme_mode: "light"  # light, dark, auto
+    typography_variant: "Roboto"
+    locale: "ja"
+    
+  # Display settings
+  display:
+    properties_per_page: 20
+    image_thumbnail_size: 300
+    default_sort: "date_desc"  # date_desc, price_asc, price_desc, size_desc
+
+# Reporting Configuration
+reporting:
+  weekly:
+    enabled: true
+    day_of_week: 0  # Sunday
+    time: "20:00"   # 8 PM
+    format: ["html", "json"]
+    email_enabled: false
+    
+  # Report content
+  content:
+    max_properties: 50
+    include_images: true
+    sort_by: "date_first_seen"
+    grouping: "property_type"
+
+# Logging Configuration
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # Log files
+  files:
+    main: "logs/karuisearch.log"
+    scraping: "logs/scraping.log"
+    errors: "logs/errors.log"
+    
+  # Log rotation
+  rotation:
+    max_size_mb: 10
+    backup_count: 5
+
+# Security Configuration
+security:
+  # API security
+  api:
+    enable_cors: true
+    allowed_origins: ["http://localhost:3000", "http://localhost:8000"]
+    
+  # Data protection
+  data:
+    anonymize_contact_info: true
+    exclude_personal_data: true
+    
+  # Scraping ethics
+  scraping:
+    respect_rate_limits: true
+    user_agent_rotation: false
+    proxy_enabled: false
+
+# Monitoring Configuration
+monitoring:
+  # Health checks
+  health_checks:
+    database: true
+    scrapers: true
+    file_system: true
+    
+  # Metrics
+  metrics:
+    enabled: false
+    endpoint: "/metrics"
+    
+  # Alerts
+  alerts:
+    email_enabled: false
+    webhook_enabled: false
+    thresholds:
+      scraping_failure_rate: 0.5  # 50%
+      database_errors: 10         # per hour
+
+# Development Configuration
+development:
+  # Debug settings
+  debug:
+    sql_echo: false
+    detailed_errors: true
+    
+  # Testing
+  testing:
+    mock_scrapers: false
+    sample_data: true
+    
+  # Hot reload
+  hot_reload:
+    enabled: true
+    watch_paths: ["src/", "config/"]
+
+# Environment Variables (use ${VAR_NAME} syntax)
+environment:
+  database_password: "${DATABASE_PASSWORD}"
+  secret_key: "${SECRET_KEY}"
+  email_api_key: "${EMAIL_API_KEY}"
+  sentry_dsn: "${SENTRY_DSN}"
