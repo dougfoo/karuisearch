@@ -7,8 +7,14 @@
   "navigation": {
     "home": "ホーム",
     "weekly": "今週の新着",
-    "listings": "全物件一覧",
-    "reports": "週間レポート",
+    "weeklyReport": "週間レポート",
+    "allListings": "全物件一覧",
+    "priceAnalysis": "価格分析",
+    "favorites": "お気に入り",
+    "searchHistory": "検索履歴",
+    "settings": "設定",
+    "quickFilters": "クイックフィルター",
+    "openMenu": "メニューを開く",
     "language": "言語",
     "menu": "メニュー"
   },
@@ -20,14 +26,20 @@
     "apply": "適用",
     "close": "閉じる",
     "loading": "読み込み中...",
+    "loadingProperties": "物件を読み込み中...",
     "error": "エラーが発生しました",
     "retry": "再試行",
     "noData": "データがありません",
+    "noImage": "画像なし",
     "showMore": "もっと見る",
     "viewDetails": "詳細を見る",
     "viewOriginal": "元サイトを見る",
     "favorite": "お気に入り",
-    "share": "共有"
+    "share": "共有",
+    "changeLanguage": "言語を変更",
+    "notifications": "通知",
+    "settings": "設定",
+    "back": "戻る"
   },
   "property": {
     "title": "物件名",
@@ -155,6 +167,109 @@
     "properties": "物件情報を読み込み中...",
     "images": "画像を読み込み中...",
     "details": "詳細情報を取得中...",
-    "search": "検索中..."
+    "search": "検索中...",
+    "weeklyReport": "週間レポートを読み込み中..."
+  },
+  "home": {
+    "hero": {
+      "title": "軽井沢の不動産を見つけよう",
+      "subtitle": "最新の物件情報と価格動向をお届けします"
+    },
+    "stats": {
+      "totalProperties": "総物件数",
+      "newThisWeek": "今週の新着",
+      "averagePrice": "平均価格",
+      "popularType": "人気物件"
+    },
+    "quickActions": {
+      "weeklyReport": "週間レポート",
+      "weeklyReportDesc": "今週の新着物件とトレンド",
+      "allListings": "全物件一覧",
+      "allListingsDesc": "すべての物件を検索・閲覧"
+    },
+    "emptyState": {
+      "title": "条件に合う物件が見つかりませんでした",
+      "description": "検索条件を変更するか、フィルターをクリアしてお試しください",
+      "action": "フィルターをクリア"
+    },
+    "noResults": "検索結果がありません",
+    "loadMore": "さらに読み込む"
+  },
+  "weeklyReport": {
+    "title": "週間レポート",
+    "previousWeek": "前の週",
+    "nextWeek": "次の週",
+    "thisWeek": "今週",
+    "weeksAgo": "{{count}}週間前",
+    "noData": "レポートデータがありません",
+    "noDataDesc": "この週のデータはまだ利用できません",
+    "exportPdf": "PDF出力",
+    "stats": {
+      "newListings": "新着物件数",
+      "averagePrice": "平均価格",
+      "propertyTypes": "物件種別数",
+      "dailyAverage": "日平均"
+    },
+    "propertyTypeDistribution": "物件種別分布",
+    "priceDistribution": "価格帯分布",
+    "priceRange": "価格帯",
+    "properties": "物件数",
+    "percentage": "割合",
+    "priceRanges": {
+      "under_30m": "3,000万円未満",
+      "30_50m": "3,000万円〜5,000万円",
+      "50_100m": "5,000万円〜1億円",
+      "100_200m": "1億円〜2億円",
+      "over_200m": "2億円以上"
+    },
+    "newListings": "新着物件",
+    "noNewListings": "新着物件はありません",
+    "noNewListingsDesc": "この週は新しい物件の登録がありませんでした",
+    "viewAllListings": "全物件を見る",
+    "insights": "週間分析",
+    "insightSummary": "今週は{{count}}件の新着物件があり、平均価格は{{averagePrice}}でした。最も多い物件種別は{{topType}}です。",
+    "highActivity": "活発な市場",
+    "premiumMarket": "プレミアム市場",
+    "noInsights": "この週の分析データはありません"
+  },
+  "allListings": {
+    "title": "全物件一覧",
+    "description": "軽井沢の全不動産物件を検索・閲覧できます",
+    "viewMode": "表示モード",
+    "gridView": "グリッド表示",
+    "listView": "リスト表示",
+    "resultsCount": "{{count}}件の物件",
+    "resultsCount_zero": "該当する物件はありません",
+    "resultsCount_one": "1件の物件",
+    "resultsCount_other": "{{count}}件の物件",
+    "loadMore": "さらに読み込む",
+    "endOfResults": "全{{count}}件の物件を表示しました",
+    "openFilters": "フィルターを開く",
+    "filters": "フィルター",
+    "emptyState": {
+      "title": "条件に合う物件が見つかりませんでした",
+      "description": "検索条件を変更するか、フィルターを調整してお試しください",
+      "action": "フィルターをリセット"
+    },
+    "noResults": "検索結果がありません"
+  },
+  "propertyDetail": {
+    "details": "物件詳細",
+    "print": "印刷",
+    "notFound": "物件が見つかりません",
+    "notFoundDesc": "指定された物件は存在しないか、削除された可能性があります",
+    "backToListings": "物件一覧に戻る",
+    "contactPhone": "電話で問い合わせ",
+    "contactEmail": "メールで問い合わせ",
+    "viewOnMap": "地図で見る",
+    "nearbyProperties": "周辺の物件",
+    "priceHistory": "価格履歴",
+    "similarProperties": "類似物件"
+  },
+  "app": {
+    "title": "軽井サーチ",
+    "subtitle": "Karui-Search",  
+    "description": "軽井沢不動産検索システム",
+    "version": "バージョン"
   }
 }

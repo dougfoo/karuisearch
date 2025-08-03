@@ -1,0 +1,75 @@
+# Node.js dependencies
+node_modules/
+src/frontend/node_modules/
+*/node_modules/
+**/node_modules/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+.env
+.venv
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Logs
+*.log
+logs/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+
+# Coverage reports
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Package-lock files (optional - some prefer to track these)
+# package-lock.json
+# yarn.lock
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Browser automation
+chromedriver*
+geckodriver*
+selenium-debug.log
+
+# Scraped data exports (optional - exclude if sensitive)
+karuizawa_properties_*.json
+karuizawa_properties_*.csv
+scraping_report_*.json

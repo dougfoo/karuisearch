@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>軽井サーチ - Karuizawa Real Estate Search</title>
+  <meta name="title" content="軽井サーチ - Karuizawa Real Estate Search" />
+  <meta name="description" content="軽井沢の不動産物件を検索・閲覧できるウェブアプリケーション。最新の物件情報と価格動向をお届けします。" />
+  <meta name="keywords" content="軽井沢,不動産,物件検索,別荘,一戸建て,土地,Karuizawa,real estate" />
+  <meta name="author" content="Karui-Search Team" />
+  <meta name="robots" content="index, follow" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://karuisearch.example.com/" />
+  <meta property="og:title" content="軽井サーチ - Karuizawa Real Estate Search" />
+  <meta property="og:description" content="軽井沢の不動産物件を検索・閲覧できるウェブアプリケーション。最新の物件情報と価格動向をお届けします。" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <meta property="og:site_name" content="軽井サーチ" />
+  <meta property="og:locale" content="ja_JP" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://karuisearch.example.com/" />
+  <meta property="twitter:title" content="軽井サーチ - Karuizawa Real Estate Search" />
+  <meta property="twitter:description" content="軽井沢の不動産物件を検索・閲覧できるウェブアプリケーション。最新の物件情報と価格動向をお届けします。" />
+  <meta property="twitter:image" content="/og-image.jpg" />
+  
+  <!-- PWA Meta Tags -->
+  <meta name="theme-color" content="#2E7D32" />
+  <meta name="background-color" content="#ffffff" />
+  <meta name="display" content="standalone" />
+  <link rel="manifest" href="/manifest.json" />
+  
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="軽井サーチ" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" 
+    rel="stylesheet" 
+  />
+  
+  <!-- Material Icons -->
+  <link 
+    href="https://fonts.googleapis.com/icon?family=Material+Icons" 
+    rel="stylesheet" 
+  />
+  
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="/src/main.tsx" as="script" />
+  
+  <!-- Performance and Security -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  
+  <!-- Loading styles to prevent FOUC -->
+  <style>
+    /* Loading screen styles */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      color: white;
+    }
+    
+    #loading .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    #loading .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    #loading .subtitle {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    /* Hide scrollbar during loading */
+    body.loading {
+      overflow: hidden;
+    }
+    
+    /* Reset styles */
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', 'Noto Sans JP', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+</head>
+<body class="loading">
+  <!-- Loading Screen -->
+  <div id="loading">
+    <div class="logo">軽井サーチ</div>
+    <div class="spinner"></div>
+    <div class="subtitle">Karuizawa Real Estate Search</div>
+  </div>
+  
+  <!-- App Root -->
+  <div id="root"></div>
+  
+  <!-- App Initialization -->
+  <script>
+    // Remove loading screen when app loads
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const loading = document.getElementById('loading');
+        const body = document.body;
+        
+        if (loading) {
+          loading.style.opacity = '0';
+          loading.style.transition = 'opacity 0.5s ease-out';
+          
+          setTimeout(function() {
+            loading.remove();
+            body.classList.remove('loading');
+          }, 500);
+        }
+      }, 1000); // Minimum loading time for UX
+    });
+    
+    // Handle loading errors
+    window.addEventListener('error', function(e) {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        loading.innerHTML = `
+          <div style="text-align: center; padding: 2rem;">
+            <h2>読み込みエラー</h2>
+            <p>アプリケーションの読み込み中にエラーが発生しました。</p>
+            <button onclick="window.location.reload()" 
+                    style="padding: 0.5rem 1rem; background: white; color: #2E7D32; border: none; border-radius: 4px; cursor: pointer; font-weight: 500;">
+              再読み込み
+            </button>
+          </div>
+        `;
+      }
+    });
+    
+    // Development logging
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      console.log('🏠 軽井サーチ - Development Mode');
+      console.log('📍 Karuizawa Real Estate Search Application');
+      console.log('🚀 Starting application...');
+    }
+  </script>
+  
+  <!-- Module Script -->
+  <script type="module" src="/src/main.tsx"></script>
+  
+  <!-- Fallback for browsers without module support -->
+  <script nomodule>
+    document.getElementById('loading').innerHTML = `
+      <div style="text-align: center; padding: 2rem;">
+        <h2>ブラウザが対応していません</h2>
+        <p>このアプリケーションを使用するには、モダンブラウザが必要です。</p>
+        <p>Chrome、Firefox、Safari、Edge の最新版をご利用ください。</p>
+      </div>
+    `;
+  </script>
+</body>
+</html>

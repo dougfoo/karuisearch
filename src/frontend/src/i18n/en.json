@@ -7,8 +7,14 @@
   "navigation": {
     "home": "Home",
     "weekly": "This Week's New",
-    "listings": "All Listings",
-    "reports": "Weekly Reports",
+    "weeklyReport": "Weekly Report",
+    "allListings": "All Listings",
+    "priceAnalysis": "Price Analysis",
+    "favorites": "Favorites",
+    "searchHistory": "Search History",
+    "settings": "Settings",
+    "quickFilters": "Quick Filters",
+    "openMenu": "Open Menu",
     "language": "Language",
     "menu": "Menu"
   },
@@ -20,14 +26,20 @@
     "apply": "Apply",
     "close": "Close",
     "loading": "Loading...",
+    "loadingProperties": "Loading properties...",
     "error": "An error occurred",
     "retry": "Retry",
     "noData": "No data available",
+    "noImage": "No Image",
     "showMore": "Show More",
     "viewDetails": "View Details",
     "viewOriginal": "View Original",
     "favorite": "Favorite",
-    "share": "Share"
+    "share": "Share",
+    "changeLanguage": "Change Language",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "back": "Back"
   },
   "property": {
     "title": "Property Name",
@@ -155,6 +167,109 @@
     "properties": "Loading properties...",
     "images": "Loading images...",
     "details": "Loading details...",
-    "search": "Searching..."
+    "search": "Searching...",
+    "weeklyReport": "Loading weekly report..."
+  },
+  "home": {
+    "hero": {
+      "title": "Find Your Perfect Karuizawa Property",
+      "subtitle": "Latest property listings and market trends at your fingertips"
+    },
+    "stats": {
+      "totalProperties": "Total Properties",
+      "newThisWeek": "New This Week",
+      "averagePrice": "Average Price",
+      "popularType": "Popular Type"
+    },
+    "quickActions": {
+      "weeklyReport": "Weekly Report",
+      "weeklyReportDesc": "This week's new listings and trends",
+      "allListings": "All Listings",
+      "allListingsDesc": "Browse and search all properties"
+    },
+    "emptyState": {
+      "title": "No properties match your criteria",
+      "description": "Try adjusting your search criteria or clear the filters",
+      "action": "Clear Filters"
+    },
+    "noResults": "No search results",
+    "loadMore": "Load More"
+  },
+  "weeklyReport": {
+    "title": "Weekly Report",
+    "previousWeek": "Previous Week",
+    "nextWeek": "Next Week",
+    "thisWeek": "This Week",
+    "weeksAgo": "{{count}} weeks ago",
+    "noData": "No report data available",
+    "noDataDesc": "Data for this week is not yet available",
+    "exportPdf": "Export PDF",
+    "stats": {
+      "newListings": "New Listings",
+      "averagePrice": "Average Price",
+      "propertyTypes": "Property Types",
+      "dailyAverage": "Daily Average"
+    },
+    "propertyTypeDistribution": "Property Type Distribution",
+    "priceDistribution": "Price Distribution",
+    "priceRange": "Price Range",
+    "properties": "Properties",
+    "percentage": "Percentage",
+    "priceRanges": {
+      "under_30m": "Under ¥30M",
+      "30_50m": "¥30M - ¥50M",
+      "50_100m": "¥50M - ¥100M",
+      "100_200m": "¥100M - ¥200M",
+      "over_200m": "Over ¥200M"
+    },
+    "newListings": "New Listings",
+    "noNewListings": "No new listings",
+    "noNewListingsDesc": "No new properties were listed this week",
+    "viewAllListings": "View All Listings",
+    "insights": "Weekly Insights",
+    "insightSummary": "This week saw {{count}} new listings with an average price of {{averagePrice}}. The most common property type was {{topType}}.",
+    "highActivity": "High Activity",
+    "premiumMarket": "Premium Market",
+    "noInsights": "No insights available for this week"
+  },
+  "allListings": {
+    "title": "All Listings",
+    "description": "Browse and search all Karuizawa real estate properties",
+    "viewMode": "View Mode",
+    "gridView": "Grid View",
+    "listView": "List View",
+    "resultsCount": "{{count}} properties",
+    "resultsCount_zero": "No properties found",
+    "resultsCount_one": "1 property",
+    "resultsCount_other": "{{count}} properties",
+    "loadMore": "Load More",
+    "endOfResults": "Showing all {{count}} properties",
+    "openFilters": "Open Filters",
+    "filters": "Filters",
+    "emptyState": {
+      "title": "No properties match your criteria",
+      "description": "Try adjusting your search criteria or modify the filters",
+      "action": "Reset Filters"
+    },
+    "noResults": "No search results"
+  },
+  "propertyDetail": {
+    "details": "Property Details",
+    "print": "Print",
+    "notFound": "Property not found",
+    "notFoundDesc": "The specified property does not exist or may have been removed",
+    "backToListings": "Back to Listings",
+    "contactPhone": "Contact by Phone",
+    "contactEmail": "Contact by Email",
+    "viewOnMap": "View on Map",
+    "nearbyProperties": "Nearby Properties",
+    "priceHistory": "Price History",
+    "similarProperties": "Similar Properties"
+  },
+  "app": {
+    "title": "Karui-Search",
+    "subtitle": "軽井サーチ",
+    "description": "Karuizawa Real Estate Search System",
+    "version": "Version"
   }
 }
