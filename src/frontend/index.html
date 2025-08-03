@@ -142,22 +142,40 @@
   
   <!-- App Initialization -->
   <script>
-    // Remove loading screen when app loads
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        const loading = document.getElementById('loading');
-        const body = document.body;
+    // Function to remove loading screen
+    function removeLoadingScreen() {
+      const loading = document.getElementById('loading');
+      const body = document.body;
+      
+      if (loading) {
+        loading.style.opacity = '0';
+        loading.style.transition = 'opacity 0.3s ease-out';
         
-        if (loading) {
-          loading.style.opacity = '0';
-          loading.style.transition = 'opacity 0.5s ease-out';
-          
-          setTimeout(function() {
-            loading.remove();
-            body.classList.remove('loading');
-          }, 500);
-        }
-      }, 1000); // Minimum loading time for UX
+        setTimeout(function() {
+          loading.remove();
+          body.classList.remove('loading');
+          console.log('Loading screen removed');
+        }, 300);
+      }
+    }
+    
+    // Wait for React to render content
+    function waitForReactContent() {
+      const root = document.getElementById('root');
+      
+      if (root && root.innerHTML.trim()) {
+        console.log('React content detected, removing loading screen');
+        removeLoadingScreen();
+      } else {
+        // Check again after a short delay
+        setTimeout(waitForReactContent, 100);
+      }
+    }
+    
+    // Start checking for React content after page load
+    window.addEventListener('load', function() {
+      console.log('Window loaded, waiting for React content...');
+      setTimeout(waitForReactContent, 500); // Small delay to let React initialize
     });
     
     // Handle loading errors

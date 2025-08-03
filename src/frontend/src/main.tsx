@@ -6,32 +6,46 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+import TestApp from './TestApp';
 
 // Get root element
 const container = document.getElementById('root');
 
+console.log('Main.tsx: Starting React app');
+console.log('Container element:', container);
+
 if (!container) {
+  console.error('Root element not found!');
   throw new Error('Root element not found. Make sure you have a <div id="root"></div> in your HTML.');
 }
 
 // Create React root
+console.log('Creating React root...');
 const root = createRoot(container);
 
 // Development mode setup
 if (import.meta.env.DEV) {
   // Enable React DevTools in development
-  if (typeof window !== 'undefined') {
-    window.__REACT_DEVTOOLS_GLOBAL_HOOK__?.onCommitFiberRoot = 
-      window.__REACT_DEVTOOLS_GLOBAL_HOOK__?.onCommitFiberRoot || (() => {});
+  if (typeof window !== 'undefined' && window.__REACT_DEVTOOLS_GLOBAL_HOOK__) {
+    if (!window.__REACT_DEVTOOLS_GLOBAL_HOOK__.onCommitFiberRoot) {
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__.onCommitFiberRoot = () => {};
+    }
   }
 }
 
 // Render application
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+console.log('Attempting to render React app...');
+
+try {
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+  console.log('React render completed successfully!');
+} catch (error) {
+  console.error('React render failed:', error);
+}
 
 // Development HMR (Hot Module Replacement) setup
 if (import.meta.env.DEV && import.meta.hot) {
