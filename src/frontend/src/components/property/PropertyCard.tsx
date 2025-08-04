@@ -123,6 +123,14 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
     return colorMap[type] || theme.palette.grey[500];
   };
 
+  // Get source name from URL
+  const getSourceName = (sourceUrl: string) => {
+    if (sourceUrl.includes('mitsuinomori.co.jp')) return '三井の森';
+    if (sourceUrl.includes('royal-resort.co.jp')) return 'Royal Resort';
+    if (sourceUrl.includes('besso-navi.com')) return 'Besso Navi';
+    return t('property.source');
+  };
+
   // Get price change icon and color
   const getPriceChangeDisplay = () => {
     if (!property.price_change || property.price_change.direction === 'none') {
@@ -270,6 +278,23 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
           </Box>
         )}
 
+        {/* Property Type Chip */}
+        {property.property_type && (
+          <Box mb={1}>
+            <Chip
+              label={formatPropertyType(property.property_type, locale)}
+              size="small"
+              variant="outlined"
+              sx={{
+                backgroundColor: `${getPropertyTypeColor(property.property_type)}15`,
+                borderColor: getPropertyTypeColor(property.property_type),
+                color: getPropertyTypeColor(property.property_type),
+                fontWeight: 500,
+              }}
+            />
+          </Box>
+        )}
+
         {/* Location */}
         <Box display="flex" alignItems="center" gap={0.5} mb={1}>
           <LocationOnIcon fontSize="small" color="action" />
@@ -302,12 +327,37 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
           )}
         </Box>
 
-        {/* Date Added */}
+        {/* Description */}
+        {!compact && property.description && (
+          <Typography 
+            variant="body2" 
+            color="text.secondary"
+            sx={{
+              mt: 1,
+              mb: 1,
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              lineHeight: 1.4,
+            }}
+          >
+            {truncateText(property.description, 120)}
+          </Typography>
+        )}
+
+        {/* Date Added & Source */}
         {!compact && (
-          <Box display="flex" alignItems="center" gap={0.5} mt={1}>
-            <CalendarTodayIcon fontSize="small" color="action" />
-            <Typography variant="caption" color="text.secondary">
-              {t('property.dateAdded')}: {formatRelativeDate(property.date_first_seen, locale)}
+          <Box display="flex" justifyContent="space-between" alignItems="center" mt={1}>
+            <Box display="flex" alignItems="center" gap={0.5}>
+              <CalendarTodayIcon fontSize="small" color="action" />
+              <Typography variant="caption" color="text.secondary">
+                {formatRelativeDate(property.date_first_seen, locale)}
+              </Typography>
+            </Box>
+            <Typography variant="caption" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+              {getSourceName(property.source_url)}
             </Typography>
           </Box>
         )}

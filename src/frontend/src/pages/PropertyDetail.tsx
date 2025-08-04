@@ -91,6 +91,14 @@ const PropertyDetail: React.FC = () => {
 
   const toggleFavoriteMutation = useToggleFavorite();
 
+  // Get source name from URL
+  const getSourceName = (sourceUrl: string) => {
+    if (sourceUrl.includes('mitsuinomori.co.jp')) return '三井の森';
+    if (sourceUrl.includes('royal-resort.co.jp')) return 'Royal Resort';
+    if (sourceUrl.includes('besso-navi.com')) return 'Besso Navi';
+    return t('property.source');
+  };
+
   // Event handlers
   const handleBack = () => {
     navigate(-1);
@@ -546,6 +554,14 @@ const PropertyDetail: React.FC = () => {
                         sx={{ ml: 1 }}
                       />
                     )}
+                    {property.is_featured && (
+                      <Chip
+                        label={t('property.featured')}
+                        color="warning"
+                        size="small"
+                        sx={{ ml: 1 }}
+                      />
+                    )}
                   </Box>
                 )}
 
@@ -588,8 +604,11 @@ const PropertyDetail: React.FC = () => {
                   <Typography variant="body2" color="text.secondary" gutterBottom>
                     {t('property.dateAdded')}: {formatRelativeDate(property.date_first_seen, locale)}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" gutterBottom>
                     {t('property.lastUpdated')}: {formatDate(property.scraped_date, locale)}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {t('property.source')}: {getSourceName(property.source_url)}
                   </Typography>
                 </Box>
 

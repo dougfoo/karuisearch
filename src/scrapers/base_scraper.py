@@ -144,22 +144,56 @@ class SimpleScraper(AbstractPropertyScraper):
             
         # Basic price validation (if parseable)
         try:
-            # Try to extract numbers from price string
+            # Parse Japanese price formats properly
             import re
-            price_text = data.price.replace(',', '').replace('万円', '').replace('円', '')
-            price_numbers = re.findall(r'\d+', price_text)
-            if price_numbers:
-                price_value = int(price_numbers[0])
-                
-                # Handle "万円" (10,000 yen units)
-                if '万円' in data.price:
-                    price_value = price_value * 10000  # Convert to yen
-                    
-                if price_value < 1000000 or price_value > 500000000:
-                    logger.warning(f"Price out of range: {data.price} (calculated: {price_value:,} yen)")
-                    return False
+            price_value = self._parse_japanese_price(data.price)
+            
+            if price_value and (price_value < 1000000 or price_value > 5000000000):  # 1M to 5B yen range
+                logger.warning(f"Price out of range: {data.price} (calculated: {price_value:,} yen)")
+                return False
         except (ValueError, IndexError):
             # If we can't parse price, that's ok for V1
             pass
             
         return True
+    
+    def _parse_japanese_price(self, price_string: str) -> Optional[int]:
+        """
+        Parse Japanese price formats properly, handling 億円 and 万円 combinations.
+        Examples:
+        - "3億5,000万円" -> 350000000
+        - "1億円" -> 100000000  
+        - "5,000万円" -> 50000000
+        - "¥350000000" -> 350000000
+        """
+        if not price_string:
+            return None
+            
+        import re
+        
+        # Handle complex format: 3億5,000万円
+        if '億' in price_string and '万円' in price_string:
+            match = re.match(r'(\d+)億([0-9,]+)万円', price_string)
+            if match:
+                oku_part = int(match.group(1))  # 3
+                man_part = int(match.group(2).replace(',', ''))  # 5000
+                return oku_part * 100000000 + man_part * 10000  # 3*100M + 5000*10K = 350M
+        
+        # Handle 億円 only: 1億円
+        if '億円' in price_string:
+            match = re.search(r'(\d+)億円', price_string)
+            if match:
+                return int(match.group(1)) * 100000000  # 1*100M = 100M
+        
+        # Handle 万円 only: 5,000万円
+        if '万円' in price_string:
+            match = re.search(r'([0-9,]+)万円', price_string)
+            if match:
+                return int(match.group(1).replace(',', '')) * 10000  # 5000*10K = 50M
+        
+        # Handle regular numbers: ¥350000000, 350,000,000円
+        numbers = re.findall(r'[0-9,]+', price_string)
+        if numbers:
+            return int(numbers[0].replace(',', ''))
+            
+        return None

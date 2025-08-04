@@ -7,12 +7,32 @@ import { logger } from './logger';
 
 // Japanese number formatting utilities
 export const formatPrice = (price: string | number, locale: string = 'ja'): string => {
-  // If price is already a formatted string, return as-is
+  // If price is already a formatted string with ¥, return as-is
   if (typeof price === 'string' && price.includes('¥')) {
     return price;
   }
   
-  const numericPrice = typeof price === 'string' ? parseFloat(price.replace(/[^\d]/g, '')) : price;
+  let numericPrice: number;
+  
+  if (typeof price === 'string') {
+    // Handle Japanese price formats like "5,000万円" or "1.2億円"
+    if (price.includes('億円')) {
+      // Remove all non-numeric characters except decimal points, then remove commas
+      const cleanValue = price.replace(/[^0-9.,]/g, '').replace(/,/g, '');
+      const okuValue = parseFloat(cleanValue);
+      numericPrice = okuValue * 100000000; // Convert 億 to actual yen
+    } else if (price.includes('万円')) {
+      // Remove all non-numeric characters except decimal points, then remove commas
+      const cleanValue = price.replace(/[^0-9.,]/g, '').replace(/,/g, '');
+      const manValue = parseFloat(cleanValue);
+      numericPrice = manValue * 10000; // Convert 万 to actual yen
+    } else {
+      // Extract just numbers, removing commas and other non-digit characters except decimal points
+      numericPrice = parseFloat(price.replace(/[^\d.]/g, ''));
+    }
+  } else {
+    numericPrice = price;
+  }
   
   if (isNaN(numericPrice)) {
     logger.warn('Invalid price format', {
@@ -24,16 +44,8 @@ export const formatPrice = (price: string | number, locale: string = 'ja'): stri
   }
   
   if (locale === 'ja') {
-    // Japanese formatting with 万円/億円
-    if (numericPrice >= 100000000) { // 1億円以上
-      const oku = numericPrice / 100000000;
-      return `¥${oku.toFixed(oku % 1 === 0 ? 0 : 1)}億円`;
-    } else if (numericPrice >= 10000) { // 1万円以上
-      const man = numericPrice / 10000;
-      return `¥${man.toFixed(man % 1 === 0 ? 0 : 0)}万円`;
-    } else {
-      return `¥${numericPrice.toLocaleString('ja-JP')}`;
-    }
+    // Japanese formatting - show full numbers with proper formatting
+    return `¥${numericPrice.toLocaleString('ja-JP')}`;
   } else {
     // English formatting
     return new Intl.NumberFormat('en-US', {

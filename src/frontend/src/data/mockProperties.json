@@ -1,8 +1,8 @@
 [
   {
-    "id": "prop_0391a32e",
+    "id": "prop_01ead960",
     "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-    "price": "5,000万円",
+    "price": "3億5,000万円",
     "location": "中軽井沢 上ノ原 新築別荘 | 三井の森軽井沢販売センター",
     "property_type": "一戸建て",
     "size_info": "272.45坪 70.90坪",
@@ -18,15 +18,15 @@
     "rooms": "",
     "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/nk0405h/",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116622",
+    "date_first_seen": "2025-08-05T06:18:51.364806",
     "is_new": true,
     "is_featured": true
   },
   {
-    "id": "prop_01fe0d90",
+    "id": "prop_040c3f57",
     "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-    "price": "6,000万円",
-    "location": "中軽井沢別荘地　中古別荘",
+    "price": "1億円",
+    "location": "中軽井沢 峰の茶屋　店舗付住宅",
     "property_type": "一戸建て",
     "size_info": "319坪 41.70坪",
     "building_age": "新築",
@@ -41,14 +41,14 @@
     "rooms": "",
     "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/025c014hr/",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116632",
+    "date_first_seen": "2025-08-05T06:18:51.364817",
     "is_new": true,
     "is_featured": true
   },
   {
-    "id": "prop_05714c6b",
+    "id": "prop_046fe261",
     "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-    "price": "9,800万円",
+    "price": "7,380万円",
     "location": "中軽井沢 富ケ丘 土地 | 三井の森軽井沢販売センター",
     "property_type": "一戸建て",
     "size_info": "249坪 249坪",
@@ -64,14 +64,14 @@
     "rooms": "",
     "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/nk0462lr/",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116638",
+    "date_first_seen": "2025-08-05T06:18:51.364823",
     "is_new": true,
     "is_featured": false
   },
   {
-    "id": "prop_01e404c9",
+    "id": "prop_0403d68b",
     "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-    "price": "7,900万円",
+    "price": "7,800万円",
     "location": "中軽井沢別荘地 中古別荘 | 三井の森軽井沢販売センター",
     "property_type": "一戸建て",
     "size_info": "318坪 32.05坪",
@@ -87,15 +87,15 @@
     "rooms": "",
     "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/nk0410h/",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116643",
+    "date_first_seen": "2025-08-05T06:18:51.364827",
     "is_new": true,
     "is_featured": false
   },
   {
-    "id": "prop_03a3bcfa",
+    "id": "prop_041b88f7",
     "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
     "price": "7,800万円",
-    "location": "中軽井沢 前沢　中古別荘",
+    "location": "中軽井沢 峰の茶屋　店舗付住宅",
     "property_type": "一戸建て",
     "size_info": "302坪 42.08坪",
     "building_age": "新築",
@@ -110,7 +110,7 @@
     "rooms": "",
     "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/om0095h/",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116647",
+    "date_first_seen": "2025-08-05T06:18:51.364832",
     "is_new": true,
     "is_featured": false
   },
@@ -131,7 +131,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.mitsuinomori.co.jp/property/mitsui_006",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116681",
+    "date_first_seen": "2025-08-05T06:18:51.364866",
     "is_new": true,
     "is_featured": true
   },
@@ -152,7 +152,7 @@
     "rooms": "3LDK",
     "source_url": "https://www.mitsuinomori.co.jp/property/mitsui_007",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116689",
+    "date_first_seen": "2025-08-05T06:18:51.364875",
     "is_new": true,
     "is_featured": true
   },
@@ -173,7 +173,7 @@
     "rooms": "4LDK",
     "source_url": "https://www.mitsuinomori.co.jp/property/mitsui_008",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116695",
+    "date_first_seen": "2025-08-05T06:18:51.364881",
     "is_new": true,
     "is_featured": false
   },
@@ -194,7 +194,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.mitsuinomori.co.jp/property/mitsui_009",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116700",
+    "date_first_seen": "2025-08-05T06:18:51.364886",
     "is_new": true,
     "is_featured": false
   },
@@ -215,7 +215,7 @@
     "rooms": "3LDK",
     "source_url": "https://www.mitsuinomori.co.jp/property/mitsui_010",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116706",
+    "date_first_seen": "2025-08-05T06:18:51.364892",
     "is_new": true,
     "is_featured": false
   },
@@ -236,7 +236,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_001",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116942",
+    "date_first_seen": "2025-08-05T06:18:51.365126",
     "is_new": true,
     "is_featured": true
   },
@@ -257,7 +257,7 @@
     "rooms": "3LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_002",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116949",
+    "date_first_seen": "2025-08-05T06:18:51.365131",
     "is_new": true,
     "is_featured": true
   },
@@ -278,7 +278,7 @@
     "rooms": "4LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_003",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116954",
+    "date_first_seen": "2025-08-05T06:18:51.365136",
     "is_new": true,
     "is_featured": false
   },
@@ -299,7 +299,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_004",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116959",
+    "date_first_seen": "2025-08-05T06:18:51.365147",
     "is_new": true,
     "is_featured": false
   },
@@ -320,7 +320,7 @@
     "rooms": "3LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_005",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116964",
+    "date_first_seen": "2025-08-05T06:18:51.365152",
     "is_new": true,
     "is_featured": false
   },
@@ -341,7 +341,7 @@
     "rooms": "4LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_006",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116971",
+    "date_first_seen": "2025-08-05T06:18:51.365157",
     "is_new": true,
     "is_featured": false
   },
@@ -362,7 +362,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_007",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116976",
+    "date_first_seen": "2025-08-05T06:18:51.365162",
     "is_new": true,
     "is_featured": false
   },
@@ -383,7 +383,7 @@
     "rooms": "3LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_008",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116982",
+    "date_first_seen": "2025-08-05T06:18:51.365167",
     "is_new": true,
     "is_featured": false
   },
@@ -404,7 +404,7 @@
     "rooms": "4LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_009",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116987",
+    "date_first_seen": "2025-08-05T06:18:51.365172",
     "is_new": true,
     "is_featured": false
   },
@@ -425,7 +425,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.royal-resort.co.jp/property/royal_resort_010",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.116991",
+    "date_first_seen": "2025-08-05T06:18:51.365177",
     "is_new": true,
     "is_featured": false
   },
@@ -446,7 +446,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_001",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117145",
+    "date_first_seen": "2025-08-05T06:18:51.365336",
     "is_new": true,
     "is_featured": true
   },
@@ -467,7 +467,7 @@
     "rooms": "3LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_002",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117151",
+    "date_first_seen": "2025-08-05T06:18:51.365342",
     "is_new": true,
     "is_featured": true
   },
@@ -488,7 +488,7 @@
     "rooms": "4LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_003",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117156",
+    "date_first_seen": "2025-08-05T06:18:51.365347",
     "is_new": true,
     "is_featured": false
   },
@@ -509,7 +509,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_004",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117161",
+    "date_first_seen": "2025-08-05T06:18:51.365351",
     "is_new": true,
     "is_featured": false
   },
@@ -530,7 +530,7 @@
     "rooms": "3LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_005",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117167",
+    "date_first_seen": "2025-08-05T06:18:51.365356",
     "is_new": true,
     "is_featured": false
   },
@@ -551,7 +551,7 @@
     "rooms": "4LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_006",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117172",
+    "date_first_seen": "2025-08-05T06:18:51.365361",
     "is_new": true,
     "is_featured": false
   },
@@ -572,7 +572,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_007",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117176",
+    "date_first_seen": "2025-08-05T06:18:51.365366",
     "is_new": true,
     "is_featured": false
   },
@@ -593,7 +593,7 @@
     "rooms": "3LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_008",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117181",
+    "date_first_seen": "2025-08-05T06:18:51.365371",
     "is_new": true,
     "is_featured": false
   },
@@ -614,7 +614,7 @@
     "rooms": "4LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_009",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117186",
+    "date_first_seen": "2025-08-05T06:18:51.365375",
     "is_new": true,
     "is_featured": false
   },
@@ -635,7 +635,7 @@
     "rooms": "2LDK",
     "source_url": "https://www.besso-navi.com/property/besso_navi_010",
     "scraped_date": "2025-08-05",
-    "date_first_seen": "2025-08-05T04:22:10.117192",
+    "date_first_seen": "2025-08-05T06:18:51.365380",
     "is_new": true,
     "is_featured": false
   }

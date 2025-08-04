@@ -142,10 +142,13 @@ class MitsuiNoMoriScraper(SimpleScraper):
         # Since this is a detail page, be more generous with extraction
         
         # Price patterns - more flexible for detail pages
+        # Order matters: complex formats first, then simpler ones
         price_patterns = [
-            r'[\d,]+\s*万円',
-            r'¥[\d,]+',
-            r'[\d,]+\s*円',
+            r'\d+億[\d,]*万円',      # e.g., "3億5,000万円", "2億万円"
+            r'\d+億円',              # e.g., "3億円"
+            r'[\d,]+\s*万円',        # e.g., "5,000万円"
+            r'¥[\d,]+',              # e.g., "¥350000000"
+            r'[\d,]+\s*円',          # e.g., "350,000,000円"
             r'価格[:\s]*[\d,]+',
             r'金額[:\s]*[\d,]+',
             r'\d{1,3}(,\d{3})*\s*(yen|YEN)',
@@ -257,10 +260,13 @@ class MitsuiNoMoriScraper(SimpleScraper):
                 break
                 
         # Extract price - look for currency indicators
+        # Order matters: complex formats first, then simpler ones
         price_patterns = [
-            r'[\d,]+\s*万円',
-            r'¥[\d,]+',
-            r'[\d,]+\s*円',
+            r'\d+億[\d,]*万円',      # e.g., "3億5,000万円", "2億万円"
+            r'\d+億円',              # e.g., "3億円"
+            r'[\d,]+\s*万円',        # e.g., "5,000万円"
+            r'¥[\d,]+',              # e.g., "¥350000000"
+            r'[\d,]+\s*円',          # e.g., "350,000,000円"
             r'price[:\s]*[\d,]+',
             r'金額[:\s]*[\d,]+'
         ]

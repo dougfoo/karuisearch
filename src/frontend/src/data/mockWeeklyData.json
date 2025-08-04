@@ -8,9 +8,9 @@
   },
   "properties": [
     {
-      "id": "prop_0391a32e",
+      "id": "prop_01ead960",
       "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-      "price": "5,000万円",
+      "price": "3億5,000万円",
       "location": "中軽井沢 上ノ原 新築別荘 | 三井の森軽井沢販売センター",
       "property_type": "一戸建て",
       "size_info": "272.45坪 70.90坪",
@@ -26,15 +26,15 @@
       "rooms": "",
       "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/nk0405h/",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T04:22:10.116622",
+      "date_first_seen": "2025-08-05T06:18:51.364806",
       "is_new": true,
       "is_featured": true
     },
     {
-      "id": "prop_01fe0d90",
+      "id": "prop_040c3f57",
       "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-      "price": "6,000万円",
-      "location": "中軽井沢別荘地　中古別荘",
+      "price": "1億円",
+      "location": "中軽井沢 峰の茶屋　店舗付住宅",
       "property_type": "一戸建て",
       "size_info": "319坪 41.70坪",
       "building_age": "新築",
@@ -49,7 +49,7 @@
       "rooms": "",
       "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/025c014hr/",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T04:22:10.116632",
+      "date_first_seen": "2025-08-05T06:18:51.364817",
       "is_new": true,
       "is_featured": true
     },
@@ -70,7 +70,7 @@
       "rooms": "2LDK",
       "source_url": "https://www.mitsuinomori.co.jp/property/mitsui_006",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T04:22:10.116681",
+      "date_first_seen": "2025-08-05T06:18:51.364866",
       "is_new": true,
       "is_featured": true
     },
@@ -91,7 +91,7 @@
       "rooms": "3LDK",
       "source_url": "https://www.mitsuinomori.co.jp/property/mitsui_007",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T04:22:10.116689",
+      "date_first_seen": "2025-08-05T06:18:51.364875",
       "is_new": true,
       "is_featured": true
     },
@@ -112,7 +112,7 @@
       "rooms": "2LDK",
       "source_url": "https://www.royal-resort.co.jp/property/royal_resort_001",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T04:22:10.116942",
+      "date_first_seen": "2025-08-05T06:18:51.365126",
       "is_new": true,
       "is_featured": true
     },
@@ -133,21 +133,21 @@
       "rooms": "3LDK",
       "source_url": "https://www.royal-resort.co.jp/property/royal_resort_002",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T04:22:10.116949",
+      "date_first_seen": "2025-08-05T06:18:51.365131",
       "is_new": true,
       "is_featured": true
     }
   ],
-  "generated_at": "2025-08-05T04:22:10.117368",
+  "generated_at": "2025-08-05T06:18:51.365553",
   "summary": {
     "property_types": {
       "一戸建て": 10,
       "別荘": 20
     },
     "price_ranges": {
-      "under_20M": 0,
+      "under_20M": 1,
       "20M_to_50M": 6,
-      "50M_to_100M": 14,
+      "50M_to_100M": 12,
       "over_100M": 10
     },
     "areas": {
