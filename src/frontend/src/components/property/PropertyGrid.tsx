@@ -113,7 +113,7 @@ const PropertyGrid: React.FC<PropertyGridProps> = ({
       <Container maxWidth="lg" sx={{ py: 2 }}>
         <Grid container spacing={getGridSpacing()}>
           {Array.from({ length: getSkeletonCount() }).map((_, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={`skeleton-${index}`}>
+            <Grid item xs={12} sm={6} md={6} lg={4} key={`skeleton-${index}`}>
               <PropertyCardSkeleton compact={isMobile} />
             </Grid>
           ))}
@@ -154,8 +154,8 @@ const PropertyGrid: React.FC<PropertyGridProps> = ({
             item 
             xs={12} 
             sm={6} 
-            md={4} 
-            lg={3} 
+            md={6} 
+            lg={4} 
             key={property.id}
             sx={{
               // Ensure consistent grid item heights
