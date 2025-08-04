@@ -19,13 +19,13 @@ import {
   useTheme,
 } from '@mui/material';
 import {
-  FavoriteIcon,
-  ShareIcon,
-  LocationOnIcon,
-  HomeIcon,
-  CalendarTodayIcon,
-  TrendingUpIcon,
-  TrendingDownIcon,
+  Favorite as FavoriteIcon,
+  Share as ShareIcon,
+  LocationOn as LocationOnIcon,
+  Home as HomeIcon,
+  CalendarToday as CalendarTodayIcon,
+  TrendingUp as TrendingUpIcon,
+  TrendingDown as TrendingDownIcon,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 

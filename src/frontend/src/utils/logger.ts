@@ -165,6 +165,14 @@ class Logger {
     });
   }
 
+  pageView(pageName: string, metadata?: Record<string, any>) {
+    this.info(`Page viewed: ${pageName}`, {
+      action: 'page_view',
+      component: pageName,
+      metadata
+    });
+  }
+
   private sendToErrorTracking(message: string, error?: Error, context?: LogContext) {
     // Placeholder for production error tracking integration
     // Could integrate with services like Sentry, LogRocket, etc.
@@ -205,7 +213,8 @@ export const {
   apiResponse,
   performanceMetric,
   userInteraction,
-  languageChanged
+  languageChanged,
+  pageView
 } = logger;
 
 export default logger;

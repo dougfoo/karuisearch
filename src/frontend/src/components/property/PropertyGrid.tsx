@@ -15,7 +15,7 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
-import { RefreshIcon } from '@mui/icons-material';
+import { Refresh as RefreshIcon } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 
 import { Property, PropertyGridProps } from '@types/property';

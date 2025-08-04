@@ -20,17 +20,17 @@ import {
   Badge,
 } from '@mui/material';
 import {
-  HomeIcon,
-  CalendarTodayIcon,
-  ViewListIcon,
-  TrendingUpIcon,
-  LocationOnIcon,
-  FilterListIcon,
-  ExpandLessIcon,
-  ExpandMoreIcon,
-  FavoriteIcon,
-  HistoryIcon,
-  SettingsIcon,
+  Home as HomeIcon,
+  CalendarToday as CalendarTodayIcon,
+  ViewList as ViewListIcon,
+  TrendingUp as TrendingUpIcon,
+  LocationOn as LocationOnIcon,
+  FilterList as FilterListIcon,
+  ExpandLess as ExpandLessIcon,
+  ExpandMore as ExpandMoreIcon,
+  Favorite as FavoriteIcon,
+  History as HistoryIcon,
+  Settings as SettingsIcon,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';

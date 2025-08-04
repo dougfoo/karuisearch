@@ -18,11 +18,11 @@ import {
   Tooltip,
 } from '@mui/material';
 import {
-  MenuIcon,
-  SearchIcon,
-  TranslateIcon,
-  NotificationsIcon,
-  SettingsIcon,
+  Menu as MenuIcon,
+  Search as SearchIcon,
+  Translate as TranslateIcon,
+  Notifications as NotificationsIcon,
+  Settings as SettingsIcon,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 

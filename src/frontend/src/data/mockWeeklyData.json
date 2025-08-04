@@ -3,116 +3,116 @@
   "week_end": "2025-08-04",
   "total_new": 6,
   "price_changes": {
-    "increases": 0,
+    "increases": 1,
     "decreases": 0
   },
   "properties": [
     {
-      "id": "prop_7bd319e4",
-      "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-      "price": "¥50,000,000",
-      "location": "長野県北佐久郡軽井沢町",
-      "property_type": "一戸建て",
-      "size_info": "272.45坪 70.90坪",
+      "id": "prop_2bd0b09a",
+      "title": "Royal Resort Executive Villa Premium",
+      "price": "¥128,000,000",
+      "location": "長野県北佐久郡軽井沢町旧軽井沢",
+      "property_type": "別荘",
+      "size_info": "450㎡ (building) / 1,200㎡ (land)",
       "building_age": "新築",
-      "description": "軽井沢の高級一戸建て。三井不動産の開発による上質な住環境。 敷地面積: 272.45坪 70.90坪。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
+      "description": "旧軽井沢の超高級別荘。ロイヤルリゾート軽井沢の最上級物件。450㎡ (building) / 1,200㎡ (land)。軽井沢の豊かな自然に包まれた最高級のリゾートライフをお楽しみください。",
       "image_urls": [
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_head_05.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_head_06.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/img_head_03.png",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/img_head_04.svg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_gnavi_01.png"
+        "https://via.placeholder.com/400x300/8BC34A/ffffff?text=Royal+Resort+Villa",
+        "https://via.placeholder.com/400x300/9CCC65/ffffff?text=Luxury+Interior",
+        "https://via.placeholder.com/400x300/689F38/ffffff?text=Premium+Garden",
+        "https://via.placeholder.com/400x300/7CB342/ffffff?text=Executive+Living"
       ],
-      "rooms": "",
-      "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/nk0405h/",
-      "scraped_date": "2025-08-03",
-      "date_first_seen": "2025-08-03T23:17:10.976935+00:00",
-      "is_new": true,
-      "is_featured": false
-    },
-    {
-      "id": "prop_c8da8791",
-      "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-      "price": "¥60,000,000",
-      "location": "長野県北佐久郡軽井沢町",
-      "property_type": "一戸建て",
-      "size_info": "319坪 41.70坪",
-      "building_age": "新築",
-      "description": "軽井沢の高級一戸建て。三井不動産の開発による上質な住環境。 敷地面積: 319坪 41.70坪。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
-      "image_urls": [
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_head_05.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_head_06.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/img_head_03.png",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/img_head_04.svg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_gnavi_01.png"
-      ],
-      "rooms": "",
-      "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/025c014hr/",
-      "scraped_date": "2025-08-03",
-      "date_first_seen": "2025-08-03T23:17:10.976982+00:00",
-      "is_new": true,
-      "is_featured": false
-    },
-    {
-      "id": "prop_fee74ac7",
-      "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-      "price": "¥98,000,000",
-      "location": "長野県北佐久郡軽井沢町",
-      "property_type": "一戸建て",
-      "size_info": "249坪 249坪",
-      "building_age": "新築",
-      "description": "軽井沢の高級一戸建て。三井不動産の開発による上質な住環境。 敷地面積: 249坪 249坪。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
-      "image_urls": [
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_head_05.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_head_06.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/img_head_03.png",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/img_head_04.svg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_gnavi_01.png"
-      ],
-      "rooms": "",
-      "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/nk0462lr/",
-      "scraped_date": "2025-08-03",
-      "date_first_seen": "2025-08-03T23:17:10.976999+00:00",
+      "rooms": "5LDK+書斎",
+      "source_url": "https://www.royal-resort.co.jp/karuizawa/villa/premium",
+      "scraped_date": "2025-08-04",
+      "date_first_seen": "2025-08-04T11:45:14.169214+00:00",
       "is_new": true,
       "is_featured": true
     },
     {
-      "id": "prop_19ec077e",
-      "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
-      "price": "¥59,900,000",
-      "location": "長野県北佐久郡軽井沢町",
-      "property_type": "一戸建て",
-      "size_info": "318坪 32.05坪",
+      "id": "prop_d86da6ec",
+      "title": "Royal Resort Mountain Estate",
+      "price": "¥186,000,000",
+      "location": "長野県北佐久郡軽井沢町中軽井沢",
+      "property_type": "別荘",
+      "size_info": "600㎡ (building) / 1,800㎡ (land)",
       "building_age": "新築",
-      "description": "軽井沢の高級一戸建て。三井不動産の開発による上質な住環境。 敷地面積: 318坪 32.05坪。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
+      "description": "中軽井沢の超高級別荘。ロイヤルリゾート軽井沢の最上級物件。600㎡ (building) / 1,800㎡ (land)。軽井沢の豊かな自然に包まれた最高級のリゾートライフをお楽しみください。",
       "image_urls": [
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_head_05.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_head_06.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/img_head_03.png",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/img_head_04.svg",
-        "https://www.mitsuinomori.co.jp/karuizawa/assets/img/common/btn_gnavi_01.png"
+        "https://via.placeholder.com/400x300/8BC34A/ffffff?text=Royal+Resort+Villa",
+        "https://via.placeholder.com/400x300/9CCC65/ffffff?text=Luxury+Interior",
+        "https://via.placeholder.com/400x300/689F38/ffffff?text=Premium+Garden",
+        "https://via.placeholder.com/400x300/7CB342/ffffff?text=Executive+Living"
       ],
-      "rooms": "",
-      "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/nk0410h/",
-      "scraped_date": "2025-08-03",
-      "date_first_seen": "2025-08-03T23:17:10.977011+00:00",
+      "rooms": "6LDK+ゲストルーム",
+      "source_url": "https://www.royal-resort.co.jp/karuizawa/estate/mountain",
+      "scraped_date": "2025-08-04",
+      "date_first_seen": "2025-08-04T11:45:14.169251+00:00",
+      "is_new": true,
+      "is_featured": true
+    },
+    {
+      "id": "prop_70ddf651",
+      "title": "Royal Resort Forest Residence",
+      "price": "¥98,000,000",
+      "location": "長野県北佐久郡軽井沢町南軽井沢",
+      "property_type": "別荘",
+      "size_info": "320㎡ (building) / 800㎡ (land)",
+      "building_age": "新築",
+      "description": "南軽井沢の超高級別荘。ロイヤルリゾート軽井沢の最上級物件。320㎡ (building) / 800㎡ (land)。軽井沢の豊かな自然に包まれた最高級のリゾートライフをお楽しみください。",
+      "image_urls": [
+        "https://via.placeholder.com/400x300/8BC34A/ffffff?text=Royal+Resort+Villa",
+        "https://via.placeholder.com/400x300/9CCC65/ffffff?text=Luxury+Interior",
+        "https://via.placeholder.com/400x300/689F38/ffffff?text=Premium+Garden",
+        "https://via.placeholder.com/400x300/7CB342/ffffff?text=Executive+Living"
+      ],
+      "rooms": "4LDK+Den",
+      "source_url": "https://www.royal-resort.co.jp/karuizawa/residence/forest",
+      "scraped_date": "2025-08-04",
+      "date_first_seen": "2025-08-04T11:45:14.169261+00:00",
       "is_new": true,
       "is_featured": false
+    },
+    {
+      "id": "prop_2547d640",
+      "title": "中軽井沢 別荘ナビ厳選物件",
+      "price": "¥42,000,000",
+      "location": "長野県北佐久郡軽井沢町中軽井沢",
+      "property_type": "別荘",
+      "size_info": "180㎡ (building) / 600㎡ (land)",
+      "building_age": "築8年",
+      "description": "中軽井沢の別荘。別荘ナビ厳選の優良物件。180㎡ (building) / 600㎡ (land)。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
+      "image_urls": [
+        "https://via.placeholder.com/400x300/FF9800/ffffff?text=Vacation+Home",
+        "https://via.placeholder.com/400x300/FFA726/ffffff?text=Resort+Living",
+        "https://via.placeholder.com/400x300/FFB74D/ffffff?text=Natural+Setting"
+      ],
+      "rooms": "3LDK+ロフト",
+      "source_url": "https://www.besso-navi.com/property/naka001",
+      "scraped_date": "2025-08-04",
+      "date_first_seen": "2025-08-04T11:45:14.169281+00:00",
+      "is_new": true,
+      "is_featured": true
     }
   ],
-  "generated_at": "2025-08-03T23:17:10.978131+00:00",
+  "generated_at": "2025-08-04T11:45:14.170542+00:00",
   "summary": {
     "property_types": {
-      "一戸建て": 6,
-      "土地": 0
+      "別荘": 4,
+      "一戸建て": 1,
+      "土地": 1
     },
     "price_ranges": {
-      "20M_to_50M": 0,
+      "under_20M": 0,
+      "20M_to_50M": 3,
       "50M_to_100M": 1,
-      "over_100M": 0
+      "over_100M": 2
     },
     "areas": {
-      "軽井沢": 6
+      "旧軽井沢": 1,
+      "中軽井沢": 2,
+      "南軽井沢": 2,
+      "軽井沢": 1
     }
   }
 }

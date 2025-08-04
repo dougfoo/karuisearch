@@ -17,10 +17,10 @@ import {
   useTheme,
 } from '@mui/material';
 import {
-  SearchIcon,
-  HomeIcon,
-  RefreshIcon,
-  ErrorOutlineIcon,
+  Search as SearchIcon,
+  Home as HomeIcon,
+  Refresh as RefreshIcon,
+  ErrorOutline as ErrorOutlineIcon,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 

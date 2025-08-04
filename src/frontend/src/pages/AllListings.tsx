@@ -20,10 +20,10 @@ import {
   Drawer,
 } from '@mui/material';
 import {
-  ViewListIcon,
-  ViewModuleIcon,
-  FilterListIcon,
-  TuneIcon,
+  ViewList as ViewListIcon,
+  ViewModule as ViewModuleIcon,
+  FilterList as FilterListIcon,
+  Tune as TuneIcon,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';

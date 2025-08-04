@@ -1,0 +1,15 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="16" cy="16" r="16" fill="#2E7D32"/>
+  
+  <!-- House icon -->
+  <path d="M8 20V12L16 6L24 12V20H20V16H12V20H8Z" fill="white"/>
+  
+  <!-- Japanese character "軽" simplified design -->
+  <rect x="10" y="22" width="12" height="2" fill="white"/>
+  <rect x="14" y="24" width="4" height="2" fill="white"/>
+  
+  <!-- Mountain peaks for Karuizawa -->
+  <path d="M2 14L6 10L10 14H2Z" fill="#4CAF50" opacity="0.7"/>
+  <path d="M22 14L26 10L30 14H22Z" fill="#4CAF50" opacity="0.7"/>
+</svg>

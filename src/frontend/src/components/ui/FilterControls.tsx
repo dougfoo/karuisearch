@@ -27,10 +27,10 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import {
-  ExpandMoreIcon,
-  SearchIcon,
-  ClearIcon,
-  TuneIcon,
+  ExpandMore as ExpandMoreIcon,
+  Search as SearchIcon,
+  Clear as ClearIcon,
+  Tune as TuneIcon,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 

@@ -17,10 +17,10 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import {
-  TrendingUpIcon,
-  CalendarTodayIcon,
-  HomeIcon,
-  VisibilityIcon,
+  TrendingUp as TrendingUpIcon,
+  CalendarToday as CalendarTodayIcon,
+  Home as HomeIcon,
+  Visibility as VisibilityIcon,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';

@@ -7,7 +7,8 @@
       "Bash(pip install:*)",
       "Bash(python:*)",
       "Bash(mkdir:*)",
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(npm run dev:*)"
     ],
     "deny": []
   }

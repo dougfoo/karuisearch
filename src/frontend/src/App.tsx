@@ -178,7 +178,7 @@ const App: React.FC = () => {
     if ('performance' in window) {
       window.addEventListener('load', () => {
         const perfData = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
-        logger.performance('App load performance', {
+        logger.info('App load performance', {
           component: 'App',
           action: 'performance_metrics',
           metadata: {

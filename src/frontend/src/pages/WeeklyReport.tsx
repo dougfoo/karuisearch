@@ -27,16 +27,16 @@ import {
   TableRow,
 } from '@mui/material';
 import {
-  CalendarTodayIcon,
-  TrendingUpIcon,
-  TrendingDownIcon,
-  HomeIcon,
-  LocationOnIcon,
-  ArrowBackIcon,
-  ArrowForwardIcon,
-  ShareIcon,
-  PictureAsPdfIcon,
-  InsightsIcon,
+  CalendarToday as CalendarTodayIcon,
+  TrendingUp as TrendingUpIcon,
+  TrendingDown as TrendingDownIcon,
+  Home as HomeIcon,
+  LocationOn as LocationOnIcon,
+  ArrowBack as ArrowBackIcon,
+  ArrowForward as ArrowForwardIcon,
+  Share as ShareIcon,
+  PictureAsPdf as PictureAsPdfIcon,
+  Insights as InsightsIcon,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
