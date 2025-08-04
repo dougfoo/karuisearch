@@ -4,7 +4,7 @@
  * Supports both compact and full layouts
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -53,6 +53,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
   const theme = useTheme();
   const { t, i18n } = useTranslation();
   const locale = i18n.language;
+  const [imageError, setImageError] = useState(false);
 
   // Handle card click
   const handleCardClick = () => {
@@ -145,25 +146,45 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
       data-testid={`property-card-${property.id}`}
     >
       {/* Property Image */}
-      <CardMedia
-        component="img"
-        height={compact ? 120 : 200}
-        image={primaryImage || `https://via.placeholder.com/400x300/cccccc/666666?text=${encodeURIComponent(t('common.noImage'))}`}
-        alt={property.title}
-        sx={{
-          objectFit: 'cover',
-          backgroundColor: theme.palette.grey[200],
-        }}
-        onError={(e) => {
-          logger.warn('Image load error', {
-            component: 'PropertyCard',
-            action: 'image_error',
-            metadata: { propertyId: property.id, imageUrl: primaryImage }
-          });
-          // Set fallback image
-          (e.target as HTMLImageElement).src = `https://via.placeholder.com/400x300/cccccc/666666?text=${encodeURIComponent(t('common.noImage'))}`;
-        }}
-      />
+      {imageError ? (
+        <Box
+          sx={{
+            height: compact ? 120 : 200,
+            backgroundColor: theme.palette.grey[200],
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            color: theme.palette.grey[600],
+          }}
+        >
+          <HomeIcon sx={{ fontSize: 48, mb: 1 }} />
+          <Typography variant="caption">
+            {t('common.noImage')}
+          </Typography>
+        </Box>
+      ) : (
+        <CardMedia
+          component="img"
+          height={compact ? 120 : 200}
+          image={primaryImage || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PC9kZWZzPjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjY2NjY2NjIi8+PHRleHQgeD0iMjAwIiB5PSIxNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzY2NjY2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+Tm8gSW1hZ2U8L3RleHQ+PC9zdmc+'}
+          alt={property.title}
+          sx={{
+            objectFit: 'cover',
+            backgroundColor: theme.palette.grey[200],
+          }}
+          onError={(e) => {
+            if (!imageError) {
+              logger.warn('Image load error', {
+                component: 'PropertyCard',
+                action: 'image_error',
+                metadata: { propertyId: property.id, imageUrl: primaryImage }
+              });
+              setImageError(true);
+            }
+          }}
+        />
+      )}
 
       {/* Property Type Badge */}
       {property.property_type && (
