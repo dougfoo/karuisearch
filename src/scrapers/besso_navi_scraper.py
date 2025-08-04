@@ -643,21 +643,40 @@ class BessoNaviScraper(BrowserScraper):
     def extract_element_detail_url(self, element) -> str:
         """Extract detail page URL from element"""
         try:
-            link_element = element.find_element(By.TAG_NAME, "a")
-            detail_url = self.extract_attribute_safely(link_element, 'href')
+            # Look for multiple types of links with different selectors
+            link_selectors = [
+                'a[href*="property"]',
+                'a[href*="detail"]',
+                'a[href*="bukken"]',
+                'a[href*="listing"]',
+                'a[href*="item"]',
+                'a'  # Fallback to any link
+            ]
             
-            if detail_url:
-                if detail_url.startswith('/'):
-                    detail_url = urljoin(self.base_url, detail_url)
-                elif detail_url.startswith('//'):
-                    detail_url = 'https:' + detail_url
+            for selector in link_selectors:
+                try:
+                    link_element = element.find_element(By.CSS_SELECTOR, selector)
+                    detail_url = self.extract_attribute_safely(link_element, 'href')
                     
-                return detail_url
-                
+                    if detail_url and self.is_valid_property_url(detail_url):
+                        # Convert relative URL to absolute
+                        if detail_url.startswith('/'):
+                            detail_url = urljoin(self.base_url, detail_url)
+                        elif detail_url.startswith('//'):
+                            detail_url = 'https:' + detail_url
+                        
+                        logger.debug(f"Found valid property URL: {detail_url}")
+                        return detail_url
+                        
+                except Exception:
+                    continue
+                    
         except Exception as e:
             logger.debug(f"Error extracting detail URL: {e}")
-            
-        return ""
+        
+        # Fallback to current page URL if no detail URL found
+        logger.debug("No valid detail URL found, using current search page")
+        return self.driver.current_url
         
     def navigate_to_next_page(self) -> bool:
         """Navigate to next page of search results"""
@@ -688,6 +707,27 @@ class BessoNaviScraper(BrowserScraper):
         except Exception as e:
             logger.warning(f"Error navigating to next page: {e}")
             return False
+
+    def is_valid_property_url(self, url: str) -> bool:
+        """Validate if URL appears to be a property detail page"""
+        if not url:
+            return False
+        
+        # Skip javascript and anchor links
+        if url.startswith(('javascript:', '#', 'mailto:')):
+            return False
+            
+        # Check for property-related keywords in URL
+        property_keywords = ['property', 'detail', 'bukken', 'listing', 'item', 'besso', 'search']
+        url_lower = url.lower()
+        
+        # Must contain at least one property keyword or be a different page than base
+        has_property_keyword = any(keyword in url_lower for keyword in property_keywords)
+        
+        # Should not be just the base domain
+        is_not_base_url = url != self.base_url and not url.endswith('/')
+        
+        return has_property_keyword or is_not_base_url
 
     def validate_property_data(self, property_data: PropertyData) -> bool:
         """Validate Besso Navi property data"""

@@ -186,14 +186,26 @@ class MitsuiNoMoriScraper(SimpleScraper):
         if size_info_parts:
             data.size_info = ' '.join(size_info_parts)
             
-        # Extract images
+        # Extract images - improved filtering
         img_elements = soup.select('img')
-        for img in img_elements[:5]:  # Limit to 5 images
+        for img in img_elements:
             src = img.get('src') or img.get('data-src')
             if src and not src.startswith('data:'):  # Skip base64 images
+                # Filter out navigation buttons, headers, and generic assets
+                if any(skip in src.lower() for skip in ['btn_', 'nav_', 'menu_', 'common/', 'header', 'logo', 'icon', 'arrow', 'bullet']):
+                    continue
+                    
                 img_url = urljoin(self.base_url, src)
                 if img_url not in data.image_urls:
-                    data.image_urls.append(img_url)
+                    # Prioritize property photos by checking for property-related keywords
+                    if any(prop_keyword in src.lower() for prop_keyword in ['property', 'bukken', 'photo', 'image', 'gallery', 'main']):
+                        data.image_urls.insert(0, img_url)  # Add to front
+                    else:
+                        data.image_urls.append(img_url)
+                        
+                # Limit to 5 images total
+                if len(data.image_urls) >= 5:
+                    break
                     
         # Description - try to get meaningful description
         desc_selectors = ['.description', '.detail', '.content', '.summary', 'main']
@@ -315,14 +327,27 @@ class MitsuiNoMoriScraper(SimpleScraper):
                 data.rooms = room_match.group()
                 break
                 
-        # Extract images
+        # Extract images - improved filtering
         img_elements = element.select('img')
-        for img in img_elements[:5]:  # Limit to 5 images
+        for img in img_elements:
             src = img.get('src') or img.get('data-src')
-            if src:
+            if src and not src.startswith('data:'):
+                # Filter out navigation buttons, headers, and generic assets
+                if any(skip in src.lower() for skip in ['btn_', 'nav_', 'menu_', 'common/', 'header', 'logo', 'icon', 'arrow', 'bullet']):
+                    continue
+                    
                 # Convert relative URLs to absolute
                 img_url = urljoin(self.base_url, src)
-                data.image_urls.append(img_url)
+                if img_url not in data.image_urls:
+                    # Prioritize property photos
+                    if any(prop_keyword in src.lower() for prop_keyword in ['property', 'bukken', 'photo', 'image', 'gallery', 'main']):
+                        data.image_urls.insert(0, img_url)  # Add to front
+                    else:
+                        data.image_urls.append(img_url)
+                        
+                # Limit to 5 images total
+                if len(data.image_urls) >= 5:
+                    break
                 
         # Extract building age if available
         age_patterns = [
@@ -341,6 +366,47 @@ class MitsuiNoMoriScraper(SimpleScraper):
                 break
                 
         return data
+        
+    def filter_property_images(self, img_urls: List[str]) -> List[str]:
+        """Filter image URLs to exclude navigation and generic assets"""
+        filtered_images = []
+        
+        exclude_keywords = ['btn_', 'nav_', 'menu_', 'common/', 'header', 'logo', 'icon', 'arrow', 'bullet']
+        include_keywords = ['property', 'bukken', 'photo', 'image', 'gallery', 'main']
+        
+        for img_url in img_urls:
+            # Skip if contains exclude keywords
+            if any(keyword in img_url.lower() for keyword in exclude_keywords):
+                continue
+                
+            # Prioritize if contains include keywords
+            if any(keyword in img_url.lower() for keyword in include_keywords):
+                filtered_images.insert(0, img_url)  # Add to front
+            else:
+                filtered_images.append(img_url)
+        
+        return filtered_images[:5]  # Limit to 5 images
+        
+    def is_valid_property_url(self, url: str) -> bool:
+        """Validate if URL appears to be a property detail page"""
+        if not url:
+            return False
+        
+        # Skip javascript and anchor links
+        if url.startswith(('javascript:', '#', 'mailto:')):
+            return False
+            
+        # Check for property-related keywords in URL
+        property_keywords = ['property', 'detail', 'bukken', 'listing', 'realestate']
+        url_lower = url.lower()
+        
+        # Must contain at least one property keyword
+        has_property_keyword = any(keyword in url_lower for keyword in property_keywords)
+        
+        # Should not be just the base domain
+        is_not_base_url = url != self.base_url and not url.endswith('/')
+        
+        return has_property_keyword or is_not_base_url
         
     def find_property_detail_links(self, soup) -> List[str]:
         """Find links to individual property detail pages"""
