@@ -19,6 +19,16 @@ class MitsuiNoMoriScraper(SimpleScraper):
                 'rate_limit': 0.25,  # 1 request every 4 seconds (conservative)
                 'name': 'Mitsui no Mori Karuizawa'
             }
+        else:
+            # Ensure we have the base URL if not provided
+            if 'base_url' not in config:
+                config['base_url'] = 'https://www.mitsuinomori.co.jp'
+            
+            # Handle rate limit config format compatibility
+            if 'rate_limit' in config and isinstance(config['rate_limit'], dict):
+                # Extract requests_per_second from dict format
+                config['rate_limit'] = config['rate_limit']['requests_per_second']
+                
         super().__init__(config)
         
     def scrape_listings(self) -> List[PropertyData]:

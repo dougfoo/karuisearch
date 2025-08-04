@@ -194,9 +194,10 @@ class ScraperFactory:
                 
                 # Rate limiting between sites
                 if len(site_list) > 1:
-                    delay = self.default_config['rate_limit']['requests_per_second']
+                    requests_per_second = self.default_config['rate_limit']['requests_per_second']
+                    delay = 1.0 / requests_per_second
                     logger.info(f"Rate limiting: waiting {delay:.1f}s before next site")
-                    time.sleep(1.0 / delay)
+                    time.sleep(delay)
                     
             except Exception as e:
                 logger.error(f"Failed to scrape {site_key}: {e}")

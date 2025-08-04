@@ -364,6 +364,7 @@ class RoyalResortScraper(BrowserScraper):
         try:
             img_elements = element.find_elements(By.TAG_NAME, "img")
             
+            raw_images = []
             for img in img_elements:
                 # Get src or data-src (for lazy loading)
                 img_url = self.extract_attribute_safely(img, 'src')
@@ -377,14 +378,35 @@ class RoyalResortScraper(BrowserScraper):
                     elif img_url.startswith('/'):
                         img_url = urljoin(self.base_url, img_url)
                         
-                    # Filter out tiny images (likely icons)
-                    if not any(skip in img_url.lower() for skip in ['icon', 'logo', 'button', 'arrow']):
-                        images.append(img_url)
+                    raw_images.append(img_url)
+            
+            # Filter images using the helper method
+            images = self.filter_property_images(raw_images)
                         
         except Exception as e:
             logger.debug(f"Error extracting images: {e}")
             
         return images[:5]  # Limit to 5 images
+        
+    def filter_property_images(self, img_urls: List[str]) -> List[str]:
+        """Filter image URLs to exclude navigation and generic assets"""
+        filtered_images = []
+        
+        exclude_keywords = ['btn_', 'nav_', 'menu_', 'common/', 'header', 'logo', 'icon', 'arrow', 'bullet']
+        include_keywords = ['property', 'bukken', 'photo', 'image', 'gallery', 'main', 'villa', 'resort']
+        
+        for img_url in img_urls:
+            # Skip if contains exclude keywords
+            if any(keyword in img_url.lower() for keyword in exclude_keywords):
+                continue
+                
+            # Prioritize if contains include keywords
+            if any(keyword in img_url.lower() for keyword in include_keywords):
+                filtered_images.insert(0, img_url)  # Add to front
+            else:
+                filtered_images.append(img_url)
+        
+        return filtered_images[:5]  # Limit to 5 images
         
     def extract_detail_url(self, element) -> str:
         """Extract link to property detail page"""

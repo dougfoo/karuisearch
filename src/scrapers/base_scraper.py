@@ -68,7 +68,13 @@ class AbstractPropertyScraper(ABC):
     def __init__(self, config: Dict):
         self.config = config
         self.base_url = config.get('base_url', '')
-        self.rate_limiter = RateLimiter(config.get('rate_limit', 0.33))
+        
+        # Handle rate limit config format
+        rate_limit = config.get('rate_limit', 0.33)
+        if isinstance(rate_limit, dict):
+            rate_limit = rate_limit.get('requests_per_second', 0.33)
+        
+        self.rate_limiter = RateLimiter(rate_limit)
         self.session = requests.Session()
         self.setup_session()
         

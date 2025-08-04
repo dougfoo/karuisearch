@@ -20,6 +20,7 @@ import {
 } from '@mui/material';
 import {
   Favorite as FavoriteIcon,
+  FavoriteBorder as FavoriteBorderIcon,
   Share as ShareIcon,
   LocationOn as LocationOnIcon,
   Home as HomeIcon,
@@ -43,6 +44,7 @@ import {
   getEmptyText,
 } from '@utils/formatting';
 import { logger } from '@utils/logger';
+import { useToggleFavorite } from '@services/queries';
 
 const PropertyCard: React.FC<PropertyCardProps> = ({
   property,
@@ -54,6 +56,9 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
   const { t, i18n } = useTranslation();
   const locale = i18n.language;
   const [imageError, setImageError] = useState(false);
+  
+  // Favorite functionality
+  const toggleFavoriteMutation = useToggleFavorite();
 
   // Handle card click
   const handleCardClick = () => {
@@ -74,12 +79,23 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
   };
 
   // Handle favorite toggle
-  const handleFavoriteClick = (e: React.MouseEvent) => {
+  const handleFavoriteClick = async (e: React.MouseEvent) => {
     e.stopPropagation();
-    logger.userInteraction('PropertyCard', 'favorite_toggle', {
-      propertyId: property.id
-    });
-    // TODO: Implement favorite functionality
+    
+    try {
+      await toggleFavoriteMutation.mutateAsync(property.id);
+      logger.userInteraction('PropertyCard', 'favorite_toggle', {
+        propertyId: property.id,
+        newStatus: !property.isFavorite
+      });
+    } catch (error) {
+      logger.error('Favorite toggle failed', {
+        component: 'PropertyCard',
+        action: 'favorite_toggle_error',
+        error: error.message,
+        metadata: { propertyId: property.id }
+      });
+    }
   };
 
   // Handle share click
@@ -311,10 +327,11 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
         <IconButton
           size="small"
           onClick={handleFavoriteClick}
-          color="default"
+          color={property.isFavorite ? 'error' : 'default'}
           aria-label={t('common.favorite')}
+          disabled={toggleFavoriteMutation.isPending}
         >
-          <FavoriteIcon />
+          {property.isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
         
         <IconButton

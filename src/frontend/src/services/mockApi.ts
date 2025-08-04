@@ -117,7 +117,13 @@ class MockApiService {
       }
     });
 
-    return filteredProperties;
+    // Add favorite status to properties
+    const propertiesWithFavorites = filteredProperties.map(property => ({
+      ...property,
+      isFavorite: this.favoriteIds.has(property.id)
+    }));
+
+    return propertiesWithFavorites;
   }
 
   // Get a single property by ID
@@ -135,7 +141,13 @@ class MockApiService {
     }
 
     const property = this.properties.find(p => p.id === id);
-    return property || null;
+    if (property) {
+      return {
+        ...property,
+        isFavorite: this.favoriteIds.has(property.id)
+      };
+    }
+    return null;
   }
 
   // Get weekly report
@@ -246,7 +258,11 @@ class MockApiService {
       throw new Error('Failed to fetch favorites');
     }
 
-    return this.properties.filter(property => this.favoriteIds.has(property.id));
+    const favoriteProperties = this.properties.filter(property => this.favoriteIds.has(property.id));
+    return favoriteProperties.map(property => ({
+      ...property,
+      isFavorite: true
+    }));
   }
 
   // Search properties with autocomplete
@@ -274,8 +290,11 @@ class MockApiService {
       property.description?.toLowerCase().includes(searchLower)
     );
 
-    // Limit to 10 results for autocomplete
-    return results.slice(0, 10);
+    // Limit to 10 results for autocomplete and add favorite status
+    return results.slice(0, 10).map(property => ({
+      ...property,
+      isFavorite: this.favoriteIds.has(property.id)
+    }));
   }
 
   // Get price trends

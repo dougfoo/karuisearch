@@ -266,6 +266,25 @@
     "priceHistory": "Price History",
     "similarProperties": "Similar Properties"
   },
+  "favorites": {
+    "title": "Favorite Properties",
+    "description": "{{count}} saved properties",
+    "description_zero": "View your saved properties",
+    "description_one": "1 saved property",
+    "description_other": "{{count}} saved properties",
+    "loading": "Loading favorite properties...",
+    "resultsCount": "{{count}} favorite properties",
+    "resultsCount_zero": "No favorite properties",
+    "resultsCount_one": "1 favorite property",
+    "resultsCount_other": "{{count}} favorite properties",
+    "browseMore": "Browse More Properties",
+    "noResults": "No favorite properties",
+    "emptyState": {
+      "title": "No Favorite Properties",
+      "description": "Click the heart icon on properties you like to add them to your favorites",
+      "action": "Browse Properties"
+    }
+  },
   "app": {
     "title": "Karui-Search",
     "subtitle": "軽井サーチ",

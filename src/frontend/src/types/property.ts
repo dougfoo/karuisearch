@@ -22,6 +22,7 @@ export interface Property {
   price_change?: PriceChange;
   is_new?: boolean; // Added this week
   is_featured?: boolean;
+  isFavorite?: boolean; // User favorite status
 }
 
 export interface PriceChange {

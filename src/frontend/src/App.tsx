@@ -18,6 +18,7 @@ import Home from '@pages/Home';
 import WeeklyReport from '@pages/WeeklyReport';
 import AllListings from '@pages/AllListings';
 import PropertyDetail from '@pages/PropertyDetail';
+import Favorites from '@pages/Favorites';
 
 // Services and Config
 import { lightTheme } from '@utils/theme';
@@ -219,16 +220,10 @@ const App: React.FC = () => {
                   <Route path="/reports" element={<Navigate to="/weekly" replace />} />
                   <Route path="/properties" element={<Navigate to="/listings" replace />} />
 
+                  {/* Favorites Route */}
+                  <Route path="/favorites" element={<Favorites />} />
+
                   {/* Placeholder Routes for Future Implementation */}
-                  <Route 
-                    path="/favorites" 
-                    element={
-                      <div style={{ padding: '2rem', textAlign: 'center' }}>
-                        <h2>お気に入り機能</h2>
-                        <p>この機能は近日公開予定です。</p>
-                      </div>
-                    } 
-                  />
                   <Route 
                     path="/analysis" 
                     element={

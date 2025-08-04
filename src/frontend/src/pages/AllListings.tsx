@@ -11,8 +11,6 @@ import {
   Typography,
   Grid,
   Button,
-  ToggleButton,
-  ToggleButtonGroup,
   Fab,
   Badge,
   useTheme,
@@ -20,8 +18,6 @@ import {
   Drawer,
 } from '@mui/material';
 import {
-  ViewList as ViewListIcon,
-  ViewModule as ViewModuleIcon,
   FilterList as FilterListIcon,
   Tune as TuneIcon,
 } from '@mui/icons-material';
@@ -35,8 +31,6 @@ import FilterControls from '@components/ui/FilterControls';
 import { LoadingSpinner, EmptyState, ErrorState } from '@components/ui/LoadingStates';
 import { logger } from '@utils/logger';
 
-type ViewMode = 'grid' | 'list';
-
 const AllListings: React.FC = () => {
   const theme = useTheme();
   const { t } = useTranslation();
@@ -44,7 +38,6 @@ const AllListings: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   // UI State
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   // Filter state with more comprehensive defaults
@@ -103,25 +96,12 @@ const AllListings: React.FC = () => {
     logger.userInteraction('AllListings', 'clear_all_filters');
   }, []);
 
-  const handleViewModeChange = useCallback((
-    event: React.MouseEvent<HTMLElement>,
-    newViewMode: ViewMode | null,
-  ) => {
-    if (newViewMode !== null) {
-      setViewMode(newViewMode);
-      logger.userInteraction('AllListings', 'view_mode_change', {
-        viewMode: newViewMode
-      });
-    }
-  }, []);
-
   const handlePropertyClick = useCallback((property: any) => {
     navigate(`/property/${property.id}`);
     logger.userInteraction('AllListings', 'property_click', {
-      propertyId: property.id,
-      viewMode
+      propertyId: property.id
     });
-  }, [navigate, viewMode]);
+  }, [navigate]);
 
   const handleLoadMore = useCallback(() => {
     setFilters(prev => ({
@@ -144,11 +124,10 @@ const AllListings: React.FC = () => {
   React.useEffect(() => {
     logger.pageView('AllListings', {
       totalProperties: properties.length,
-      viewMode,
       activeFilterCount,
       hasSearch: !!filters.searchTerm?.trim()
     });
-  }, [properties.length, viewMode, activeFilterCount, filters.searchTerm]);
+  }, [properties.length, activeFilterCount, filters.searchTerm]);
 
   // Handle error state
   if (error && !isLoading) {
@@ -178,22 +157,6 @@ const AllListings: React.FC = () => {
             </Typography>
           </Box>
 
-          {/* Desktop View Mode Toggle */}
-          {!isMobile && (
-            <ToggleButtonGroup
-              value={viewMode}
-              exclusive
-              onChange={handleViewModeChange}
-              aria-label={t('allListings.viewMode')}
-            >
-              <ToggleButton value="grid" aria-label={t('allListings.gridView')}>
-                <ViewModuleIcon />
-              </ToggleButton>
-              <ToggleButton value="list" aria-label={t('allListings.listView')}>
-                <ViewListIcon />
-              </ToggleButton>
-            </ToggleButtonGroup>
-          )}
         </Box>
 
         <Grid container spacing={3}>
@@ -234,22 +197,6 @@ const AllListings: React.FC = () => {
                 }
               </Typography>
 
-              {/* Mobile View Mode Toggle */}
-              {isMobile && (
-                <ToggleButtonGroup
-                  value={viewMode}
-                  exclusive
-                  onChange={handleViewModeChange}
-                  size="small"
-                >
-                  <ToggleButton value="grid">
-                    <ViewModuleIcon fontSize="small" />
-                  </ToggleButton>
-                  <ToggleButton value="list">
-                    <ViewListIcon fontSize="small" />
-                  </ToggleButton>
-                </ToggleButtonGroup>
-              )}
 
               {/* Active Filters Indicator */}
               {activeFilterCount > 0 && (

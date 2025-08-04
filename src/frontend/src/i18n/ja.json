@@ -266,6 +266,25 @@
     "priceHistory": "価格履歴",
     "similarProperties": "類似物件"
   },
+  "favorites": {
+    "title": "お気に入り物件",
+    "description": "保存した{{count}}件の物件",
+    "description_zero": "保存した物件を表示します",
+    "description_one": "保存した1件の物件",
+    "description_other": "保存した{{count}}件の物件",
+    "loading": "お気に入り物件を読み込み中...",
+    "resultsCount": "{{count}}件のお気に入り物件",
+    "resultsCount_zero": "お気に入り物件はありません",
+    "resultsCount_one": "1件のお気に入り物件",
+    "resultsCount_other": "{{count}}件のお気に入り物件",
+    "browseMore": "もっと物件を見る",
+    "noResults": "お気に入り物件がありません",
+    "emptyState": {
+      "title": "お気に入り物件がありません",
+      "description": "気になる物件のハートアイコンをクリックして、お気に入りに追加しましょう",
+      "action": "物件を探す"
+    }
+  },
   "app": {
     "title": "軽井サーチ",
     "subtitle": "Karui-Search",  
