@@ -199,26 +199,18 @@ class MitsuiNoMoriScraper(SimpleScraper):
         if size_info_parts:
             data.size_info = ' '.join(size_info_parts)
             
-        # Extract images - improved filtering
+        # Extract images - collect all valid URLs first, then filter
+        raw_images = []
         img_elements = soup.select('img')
         for img in img_elements:
             src = img.get('src') or img.get('data-src')
             if src and not src.startswith('data:'):  # Skip base64 images
-                # Filter out navigation buttons, headers, and generic assets
-                if any(skip in src.lower() for skip in ['btn_', 'nav_', 'menu_', 'common/', 'header', 'logo', 'icon', 'arrow', 'bullet']):
-                    continue
-                    
                 img_url = urljoin(self.base_url, src)
-                if img_url not in data.image_urls:
-                    # Prioritize property photos by checking for property-related keywords
-                    if any(prop_keyword in src.lower() for prop_keyword in ['property', 'bukken', 'photo', 'image', 'gallery', 'main']):
-                        data.image_urls.insert(0, img_url)  # Add to front
-                    else:
-                        data.image_urls.append(img_url)
-                        
-                # Limit to 5 images total
-                if len(data.image_urls) >= 5:
-                    break
+                if img_url not in raw_images:
+                    raw_images.append(img_url)
+        
+        # Use helper method to filter and prioritize images
+        data.image_urls = self.filter_property_images(raw_images)
                     
         # Description - try to get meaningful description
         desc_selectors = ['.description', '.detail', '.content', '.summary', 'main']
@@ -343,27 +335,19 @@ class MitsuiNoMoriScraper(SimpleScraper):
                 data.rooms = room_match.group()
                 break
                 
-        # Extract images - improved filtering
+        # Extract images - collect all valid URLs first, then filter
+        raw_images = []
         img_elements = element.select('img')
         for img in img_elements:
             src = img.get('src') or img.get('data-src')
             if src and not src.startswith('data:'):
-                # Filter out navigation buttons, headers, and generic assets
-                if any(skip in src.lower() for skip in ['btn_', 'nav_', 'menu_', 'common/', 'header', 'logo', 'icon', 'arrow', 'bullet']):
-                    continue
-                    
                 # Convert relative URLs to absolute
                 img_url = urljoin(self.base_url, src)
-                if img_url not in data.image_urls:
-                    # Prioritize property photos
-                    if any(prop_keyword in src.lower() for prop_keyword in ['property', 'bukken', 'photo', 'image', 'gallery', 'main']):
-                        data.image_urls.insert(0, img_url)  # Add to front
-                    else:
-                        data.image_urls.append(img_url)
-                        
-                # Limit to 5 images total
-                if len(data.image_urls) >= 5:
-                    break
+                if img_url not in raw_images:
+                    raw_images.append(img_url)
+        
+        # Use helper method to filter and prioritize images
+        data.image_urls = self.filter_property_images(raw_images)
                 
         # Extract building age if available
         age_patterns = [

@@ -24,6 +24,7 @@ import logging
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from scrapers.scraper_factory import ScraperFactory
+from utils.titleGenerator import generate_property_title
 
 # Configure logging
 logging.basicConfig(
@@ -42,15 +43,14 @@ def generate_property_id(source_url: str) -> str:
 
 def convert_property_to_dict(prop, site_key: str, index: int) -> Dict[str, Any]:
     """Convert PropertyData object to dictionary format"""
-    return {
+    # Create property dict
+    prop_dict = {
         "id": generate_property_id(prop.source_url),
-        "title": prop.title or f"{site_key.title()} Property {index + 1}",
         "price": prop.price or "価格応談",
         "location": prop.location or "軽井沢",
         "property_type": prop.property_type or "一戸建て",
         "size_info": prop.size_info or "",
         "building_age": prop.building_age or "",
-        "description": prop.description or f"{prop.title or 'Property'} - {prop.location or 'Karuizawa'}",
         "image_urls": prop.image_urls[:5],  # Limit to 5 images
         "rooms": prop.rooms or "",
         "source_url": prop.source_url,
@@ -59,6 +59,25 @@ def convert_property_to_dict(prop, site_key: str, index: int) -> Dict[str, Any]:
         "is_new": True,
         "is_featured": index < 2  # Mark first 2 from each site as featured
     }
+    
+    # Generate title using the title generator
+    generated_title = generate_property_title(prop_dict)
+    prop_dict["title"] = generated_title
+    
+    # Use original title for description if available, otherwise use generated title
+    original_title = prop.title if prop.title else generated_title
+    prop_dict["description"] = prop.description or f"{original_title} - {prop.location or 'Karuizawa'}"
+    
+    return prop_dict
+
+def generate_better_fallback_images(site_key: str, property_num: int) -> List[str]:
+    """Generate simple no-image-available placeholders"""
+    # Use simple "no image available" placeholder for all fallback data
+    return [
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available"
+    ]
 
 def add_fallback_properties(site_key: str, existing_count: int, target_count: int = 10) -> List[Dict[str, Any]]:
     """Generate fallback properties if scraping didn't get enough results"""
@@ -100,18 +119,12 @@ def add_fallback_properties(site_key: str, existing_count: int, target_count: in
         
         fallback_prop = {
             "id": f"prop_{site_key}_{existing_count + i + 1:03d}",
-            "title": f"{config['name']} {location}物件",
             "price": f"¥{base_price:,}万円",
             "location": f"長野県北佐久郡{config['location_prefix']}{location}",
             "property_type": config['type'],
             "size_info": f"{180 + i * 20}㎡ (building) / {400 + i * 50}㎡ (land)",
             "building_age": "築8年" if i % 3 == 0 else "新築",
-            "description": f"{location}の{config['type']}。{config['name']}厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
-            "image_urls": [
-                f"https://via.placeholder.com/400x300/4CAF50/ffffff?text={site_key.title()}+Property+{i+1}",
-                f"https://via.placeholder.com/400x300/66BB6A/ffffff?text=Interior+View",
-                f"https://via.placeholder.com/400x300/8BC34A/ffffff?text=Exterior+View"
-            ],
+            "image_urls": generate_better_fallback_images(site_key, i+1),
             "rooms": f"{2 + i % 3}LDK" if config['type'] != '土地' else "",
             "source_url": f"{config['base_url']}/property/{site_key}_{existing_count + i + 1:03d}",
             "scraped_date": datetime.now().strftime('%Y-%m-%d'),
@@ -119,6 +132,11 @@ def add_fallback_properties(site_key: str, existing_count: int, target_count: in
             "is_new": True,
             "is_featured": i < 2
         }
+        
+        # Generate title using the title generator
+        generated_title = generate_property_title(fallback_prop)
+        fallback_prop["title"] = generated_title
+        fallback_prop["description"] = f"{location}の{config['type']}。{config['name']}厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。"
         
         fallback_properties.append(fallback_prop)
     

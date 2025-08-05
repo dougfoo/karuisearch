@@ -8,14 +8,12 @@
   },
   "properties": [
     {
-      "id": "prop_01ead960",
-      "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
+      "id": "prop_02dec0ad",
       "price": "3億5,000万円",
       "location": "中軽井沢 上ノ原 新築別荘 | 三井の森軽井沢販売センター",
       "property_type": "一戸建て",
       "size_info": "272.45坪 70.90坪",
       "building_age": "新築",
-      "description": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
       "image_urls": [
         "https://www.mitsuinomori.co.jp/karuizawa/karuizawa_sys/wp-content/uploads/2025/07/61c2bf0da278d3c0e3c41bbc0db56ef5-1.jpg",
         "https://www.mitsuinomori.co.jp/karuizawa/karuizawa_sys/wp-content/uploads/2025/07/b9b36bca3062fac620a181ab955970b0.jpg",
@@ -26,119 +24,121 @@
       "rooms": "",
       "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/nk0405h/",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T06:18:51.364806",
+      "date_first_seen": "2025-08-05T09:27:04.073171",
       "is_new": true,
-      "is_featured": true
+      "is_featured": true,
+      "title": "三井の森 一戸建て 新築 5,000万円 - 中軽井沢上ノ原",
+      "description": "軽井沢の別荘用中古物件・新築物件・土地をご紹介"
     },
     {
-      "id": "prop_040c3f57",
-      "title": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
+      "id": "prop_0014b94e",
       "price": "1億円",
       "location": "中軽井沢 峰の茶屋　店舗付住宅",
       "property_type": "一戸建て",
       "size_info": "319坪 41.70坪",
       "building_age": "新築",
-      "description": "軽井沢の別荘用中古物件・新築物件・土地をご紹介",
       "image_urls": [
+        "https://www.mitsuinomori.co.jp/karuizawa/karuizawa_sys/wp-content/uploads/2023/02/main-295-180x120.jpg",
         "https://www.mitsuinomori.co.jp/karuizawa/karuizawa_sys/wp-content/uploads/2025/07/1ef3ddeff6b0d1d2f8bdb1fb58087827.jpg",
         "https://www.mitsuinomori.co.jp/karuizawa/karuizawa_sys/wp-content/uploads/2025/07/a1ba673f7dc5164e1aa87e62c8270bbb.jpg",
         "https://www.mitsuinomori.co.jp/karuizawa/karuizawa_sys/wp-content/uploads/2025/07/2f2e61b1c1bbf5bb23b740a1bc81df70.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/karuizawa_sys/wp-content/uploads/2025/07/a7521add9e1c4d5cca522370a04e6314.jpg",
-        "https://www.mitsuinomori.co.jp/karuizawa/karuizawa_sys/wp-content/uploads/2025/07/8e78db5c190cc435d9dec9c1bf0e1d6e-1.jpg"
+        "https://www.mitsuinomori.co.jp/karuizawa/karuizawa_sys/wp-content/uploads/2025/07/a7521add9e1c4d5cca522370a04e6314.jpg"
       ],
       "rooms": "",
       "source_url": "https://www.mitsuinomori.co.jp/karuizawa/realestate/025c014hr/",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T06:18:51.364817",
+      "date_first_seen": "2025-08-05T09:27:04.073799",
       "is_new": true,
-      "is_featured": true
+      "is_featured": true,
+      "title": "三井の森 一戸建て 新築 1億円 - 中軽井沢峰の茶屋",
+      "description": "軽井沢の別荘用中古物件・新築物件・土地をご紹介"
     },
     {
       "id": "prop_mitsui_006",
-      "title": "三井の森 中軽井沢物件",
       "price": "¥3,500万円",
       "location": "長野県北佐久郡軽井沢町中軽井沢",
       "property_type": "一戸建て",
       "size_info": "180㎡ (building) / 400㎡ (land)",
       "building_age": "築8年",
-      "description": "中軽井沢の一戸建て。三井の森厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
       "image_urls": [
-        "https://via.placeholder.com/400x300/4CAF50/ffffff?text=Mitsui+Property+1",
-        "https://via.placeholder.com/400x300/66BB6A/ffffff?text=Interior+View",
-        "https://via.placeholder.com/400x300/8BC34A/ffffff?text=Exterior+View"
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available"
       ],
       "rooms": "2LDK",
       "source_url": "https://www.mitsuinomori.co.jp/property/mitsui_006",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T06:18:51.364866",
+      "date_first_seen": "2025-08-05T09:27:04.074044",
       "is_new": true,
-      "is_featured": true
+      "is_featured": true,
+      "title": "三井の森 一戸建て 築8年 3,500万円 - 中軽井沢",
+      "description": "中軽井沢の一戸建て。三井の森厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。"
     },
     {
       "id": "prop_mitsui_007",
-      "title": "三井の森 南軽井沢物件",
       "price": "¥4,800万円",
       "location": "長野県北佐久郡軽井沢町南軽井沢",
       "property_type": "一戸建て",
       "size_info": "200㎡ (building) / 450㎡ (land)",
       "building_age": "新築",
-      "description": "南軽井沢の一戸建て。三井の森厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
       "image_urls": [
-        "https://via.placeholder.com/400x300/4CAF50/ffffff?text=Mitsui+Property+2",
-        "https://via.placeholder.com/400x300/66BB6A/ffffff?text=Interior+View",
-        "https://via.placeholder.com/400x300/8BC34A/ffffff?text=Exterior+View"
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available"
       ],
       "rooms": "3LDK",
       "source_url": "https://www.mitsuinomori.co.jp/property/mitsui_007",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T06:18:51.364875",
+      "date_first_seen": "2025-08-05T09:27:04.074076",
       "is_new": true,
-      "is_featured": true
+      "is_featured": true,
+      "title": "三井の森 一戸建て 新築 4,800万円 - 南軽井沢",
+      "description": "南軽井沢の一戸建て。三井の森厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。"
     },
     {
       "id": "prop_royal_resort_001",
-      "title": "ロイヤルリゾート 中軽井沢物件",
       "price": "¥3,500万円",
       "location": "長野県北佐久郡軽井沢町中軽井沢",
       "property_type": "別荘",
       "size_info": "180㎡ (building) / 400㎡ (land)",
       "building_age": "築8年",
-      "description": "中軽井沢の別荘。ロイヤルリゾート厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
       "image_urls": [
-        "https://via.placeholder.com/400x300/4CAF50/ffffff?text=Royal_Resort+Property+1",
-        "https://via.placeholder.com/400x300/66BB6A/ffffff?text=Interior+View",
-        "https://via.placeholder.com/400x300/8BC34A/ffffff?text=Exterior+View"
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available"
       ],
       "rooms": "2LDK",
       "source_url": "https://www.royal-resort.co.jp/property/royal_resort_001",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T06:18:51.365126",
+      "date_first_seen": "2025-08-05T09:27:04.074599",
       "is_new": true,
-      "is_featured": true
+      "is_featured": true,
+      "title": "Royal Resort 別荘 築8年 3,500万円 - 中軽井沢",
+      "description": "中軽井沢の別荘。ロイヤルリゾート厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。"
     },
     {
       "id": "prop_royal_resort_002",
-      "title": "ロイヤルリゾート 南軽井沢物件",
       "price": "¥4,800万円",
       "location": "長野県北佐久郡軽井沢町南軽井沢",
       "property_type": "別荘",
       "size_info": "200㎡ (building) / 450㎡ (land)",
       "building_age": "新築",
-      "description": "南軽井沢の別荘。ロイヤルリゾート厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。",
       "image_urls": [
-        "https://via.placeholder.com/400x300/4CAF50/ffffff?text=Royal_Resort+Property+2",
-        "https://via.placeholder.com/400x300/66BB6A/ffffff?text=Interior+View",
-        "https://via.placeholder.com/400x300/8BC34A/ffffff?text=Exterior+View"
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available",
+        "https://via.placeholder.com/400x300/CCCCCC/666666?text=No+Image+Available"
       ],
       "rooms": "3LDK",
       "source_url": "https://www.royal-resort.co.jp/property/royal_resort_002",
       "scraped_date": "2025-08-05",
-      "date_first_seen": "2025-08-05T06:18:51.365131",
+      "date_first_seen": "2025-08-05T09:27:04.074630",
       "is_new": true,
-      "is_featured": true
+      "is_featured": true,
+      "title": "Royal Resort 別荘 新築 4,800万円 - 南軽井沢",
+      "description": "南軽井沢の別荘。ロイヤルリゾート厳選の優良物件。軽井沢の豊かな自然に包まれたリゾートライフをお楽しみください。"
     }
   ],
-  "generated_at": "2025-08-05T06:18:51.365553",
+  "generated_at": "2025-08-05T09:29:30.678851",
   "summary": {
     "property_types": {
       "一戸建て": 10,
@@ -147,12 +147,12 @@
     "price_ranges": {
       "under_20M": 1,
       "20M_to_50M": 6,
-      "50M_to_100M": 12,
+      "50M_to_100M": 11,
       "over_100M": 10
     },
     "areas": {
-      "中軽井沢": 10,
-      "南軽井沢": 5,
+      "中軽井沢": 9,
+      "南軽井沢": 6,
       "旧軽井沢": 5,
       "軽井沢": 5,
       "北軽井沢": 5

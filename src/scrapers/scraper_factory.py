@@ -9,7 +9,7 @@ import time
 from .base_scraper import AbstractPropertyScraper, PropertyData
 from .mitsui_scraper import MitsuiNoMoriScraper
 from .royal_resort_scraper import RoyalResortScraper  
-from .besso_navi_scraper import BessoNaviScraper
+from .besso_navi_http_scraper import BessoNaviHTTPScraper
 
 logger = logging.getLogger(__name__)
 
@@ -33,11 +33,11 @@ class ScraperFactory:
             'description': 'JavaScript-heavy luxury resort properties'
         },
         'besso_navi': {
-            'class': BessoNaviScraper,
+            'class': BessoNaviHTTPScraper,
             'name': 'Besso Navi',
-            'type': 'browser',
+            'type': 'simple',
             'priority': 2,
-            'description': 'Form-based vacation home search'
+            'description': 'Form-based vacation home search (HTTP-based)'
         }
     }
     

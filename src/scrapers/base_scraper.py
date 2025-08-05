@@ -157,6 +157,26 @@ class SimpleScraper(AbstractPropertyScraper):
             
         return True
     
+    def filter_property_images(self, img_urls: List[str]) -> List[str]:
+        """Filter image URLs to exclude navigation and generic assets"""
+        filtered_images = []
+        
+        exclude_keywords = ['btn_', 'nav_', 'menu_', 'common/', 'header', 'logo', 'icon', 'arrow', 'bullet']
+        include_keywords = ['property', 'bukken', 'photo', 'image', 'gallery', 'main']
+        
+        for img_url in img_urls:
+            # Skip if contains exclude keywords
+            if any(keyword in img_url.lower() for keyword in exclude_keywords):
+                continue
+                
+            # Prioritize if contains include keywords
+            if any(keyword in img_url.lower() for keyword in include_keywords):
+                filtered_images.insert(0, img_url)  # Add to front
+            else:
+                filtered_images.append(img_url)
+        
+        return filtered_images[:5]  # Limit to 5 images
+    
     def _parse_japanese_price(self, price_string: str) -> Optional[int]:
         """
         Parse Japanese price formats properly, handling 億円 and 万円 combinations.
