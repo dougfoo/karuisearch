@@ -46,8 +46,8 @@ const PropertyGrid: React.FC<PropertyGridProps> = ({
   // Determine number of skeleton cards to show
   const getSkeletonCount = () => {
     if (isMobile) return 2;
-    if (isTablet) return 4;
-    return 6;
+    if (isTablet) return 6;
+    return 8;
   };
 
   // Handle property card click
@@ -110,10 +110,10 @@ const PropertyGrid: React.FC<PropertyGridProps> = ({
   // Loading state
   if (loading) {
     return (
-      <Container maxWidth="lg" sx={{ py: 2 }}>
+      <Container maxWidth="xl" sx={{ py: 1 }}>
         <Grid container spacing={getGridSpacing()}>
           {Array.from({ length: getSkeletonCount() }).map((_, index) => (
-            <Grid item xs={12} sm={6} md={6} lg={4} key={`skeleton-${index}`}>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2.4} key={`skeleton-${index}`}>
               <PropertyCardSkeleton compact={isMobile} />
             </Grid>
           ))}
@@ -147,15 +147,16 @@ const PropertyGrid: React.FC<PropertyGridProps> = ({
 
   // Main grid display
   return (
-    <Container maxWidth="lg" sx={{ py: 2 }}>
+    <Container maxWidth="xl" sx={{ py: 1 }}>
       <Grid container spacing={getGridSpacing()}>
         {properties.map((property) => (
           <Grid 
             item 
             xs={12} 
             sm={6} 
-            md={6} 
-            lg={4} 
+            md={4} 
+            lg={3} 
+            xl={2.4}
             key={property.id}
             sx={{
               // Ensure consistent grid item heights
@@ -179,7 +180,7 @@ const PropertyGrid: React.FC<PropertyGridProps> = ({
         <Box sx={{ mt: 2, p: 1, bgcolor: 'grey.100', borderRadius: 1 }}>
           <Typography variant="caption" color="text.secondary">
             Debug: {properties.length} properties rendered • 
-            Grid: {isMobile ? '1' : isTablet ? '2' : '3-4'} columns • 
+            Grid: {isMobile ? '1' : isTablet ? '2-3' : '4-5'} columns • 
             Spacing: {getGridSpacing()}px
           </Typography>
         </Box>

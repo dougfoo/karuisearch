@@ -9,7 +9,10 @@
       "Bash(mkdir:*)",
       "Bash(npm install)",
       "Bash(npm run dev:*)",
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(timeout 300 python scripts/generate_mock_data.py)",
+      "Bash(find:*)",
+      "Bash(sed:*)"
     ],
     "deny": []
   }

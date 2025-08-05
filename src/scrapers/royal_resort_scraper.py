@@ -36,8 +36,14 @@ class RoyalResortScraper(BrowserScraper):
         """Main scraping method for Royal Resort Karuizawa properties"""
         logger.info("Starting Royal Resort Karuizawa property scraping")
         
+        # Setup browser first
+        if not self.setup_browser():
+            logger.error("Failed to setup browser")
+            return []
+        
         if not self.navigate_to_page(self.karuizawa_url):
             logger.error("Failed to navigate to Karuizawa page")
+            self.close_browser()
             return []
             
         # Handle any initial popups
@@ -78,6 +84,10 @@ class RoyalResortScraper(BrowserScraper):
                 continue
                 
         logger.info(f"Successfully extracted {len(extracted_properties)} valid properties")
+        
+        # Clean up browser
+        self.close_browser()
+        
         return extracted_properties
         
     def find_property_listings(self) -> List:

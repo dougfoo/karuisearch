@@ -132,7 +132,7 @@ const AllListings: React.FC = () => {
   // Handle error state
   if (error && !isLoading) {
     return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="xl" sx={{ py: 2 }}>
         <ErrorState
           message={error.message}
           onRetry={() => refetch()}
@@ -146,7 +146,7 @@ const AllListings: React.FC = () => {
   return (
     <Box data-testid="all-listings-page">
       {/* Page Header */}
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="xl" sx={{ py: 2 }}>
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
           <Box>
             <Typography variant="h4" component="h1" gutterBottom sx={{ fontWeight: 700 }}>
@@ -159,7 +159,7 @@ const AllListings: React.FC = () => {
 
         </Box>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {/* Desktop Filters Sidebar */}
           {!isMobile && (
             <Grid item md={3}>

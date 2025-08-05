@@ -246,8 +246,8 @@ const Home: React.FC = () => {
       </Box>
 
       {/* Main Content */}
-      <Container maxWidth="lg">
-        <Grid container spacing={3}>
+      <Container maxWidth="xl">
+        <Grid container spacing={2}>
           {/* Filters */}
           <Grid item xs={12}>
             <FilterControls

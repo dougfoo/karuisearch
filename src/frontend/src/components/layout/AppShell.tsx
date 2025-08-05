@@ -91,10 +91,12 @@ const AppShell: React.FC<AppShellProps> = ({ children }) => {
           sx={{
             padding: theme.spacing(2),
             [theme.breakpoints.up('sm')]: {
-              padding: theme.spacing(3),
+              padding: theme.spacing(1.5),
             },
             [theme.breakpoints.up('md')]: {
-              marginLeft: isMobile ? 0 : `${DRAWER_WIDTH}px`,
+              marginLeft: 0,
+              paddingLeft: theme.spacing(1),
+              padding: theme.spacing(1),
             },
           }}
         >

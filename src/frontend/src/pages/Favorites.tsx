@@ -67,7 +67,7 @@ const Favorites: React.FC = () => {
   // Handle error state
   if (error && !isLoading) {
     return (
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="xl" sx={{ py: 4 }}>
         <ErrorState
           message={error.message}
           onRetry={() => refetch()}
@@ -79,7 +79,7 @@ const Favorites: React.FC = () => {
   return (
     <Box data-testid="favorites-page">
       {/* Page Header */}
-      <Container maxWidth="lg" sx={{ py: 4 }}>
+      <Container maxWidth="xl" sx={{ py: 4 }}>
         <Box display="flex" alignItems="center" mb={4}>
           <Button
             startIcon={<ArrowBackIcon />}

@@ -9,11 +9,11 @@ from urllib.parse import urljoin, urlparse, parse_qs
 from bs4 import BeautifulSoup
 import logging
 
-from .base_scraper import AbstractPropertyScraper, PropertyData
+from .base_scraper import AbstractPropertyScraper, SimpleScraper, PropertyData
 
 logger = logging.getLogger(__name__)
 
-class BessoNaviHTTPScraper(AbstractPropertyScraper):
+class BessoNaviHTTPScraper(SimpleScraper):
     """HTTP-based scraper for Besso Navi - vacation home search site"""
     
     def __init__(self, config: dict = None):
