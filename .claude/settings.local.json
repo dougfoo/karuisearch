@@ -12,7 +12,11 @@
       "Bash(mkdir:*)",
       "Bash(timeout 300 python scripts/generate_mock_data.py)",
       "Bash(find:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(timeout 60 python:*)",
+      "Bash(./runmocks.bat)",
+      "Bash(git add:*)",
+      "Bash(git push:*)"
     ],
     "deny": []
   }

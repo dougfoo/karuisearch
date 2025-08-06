@@ -18,7 +18,7 @@ echo Estimated time: 3-5 minutes
 echo.
 pause
 
-cd /d "C:\Users\dougc\git\karuisearch"
+cd /d "C:\Users\dougc\git\karuisearch\scripts"
 python run_scraper_balanced.py --writemock
 
 echo.

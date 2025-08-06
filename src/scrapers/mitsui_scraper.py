@@ -6,6 +6,7 @@ from typing import List, Optional
 from urllib.parse import urljoin
 import logging
 from .base_scraper import SimpleScraper, PropertyData
+from utils.titleGenerator import generate_property_title
 
 logger = logging.getLogger(__name__)
 
@@ -235,6 +236,17 @@ class MitsuiNoMoriScraper(SimpleScraper):
             if age_match:
                 data.building_age = age_match.group()
                 break
+        
+        # Generate proper title using title generator
+        if data.price or data.location or data.property_type:
+            property_dict = {
+                'source_url': data.source_url,
+                'property_type': data.property_type,
+                'building_age': data.building_age,
+                'price': data.price,
+                'location': data.location
+            }
+            data.title = generate_property_title(property_dict)
                 
         return data if (data.title or data.price) else None
         
@@ -364,6 +376,17 @@ class MitsuiNoMoriScraper(SimpleScraper):
             if age_match:
                 data.building_age = age_match.group()
                 break
+        
+        # Generate proper title using title generator
+        if data.price or data.location or data.property_type:
+            property_dict = {
+                'source_url': data.source_url,
+                'property_type': data.property_type,
+                'building_age': data.building_age,
+                'price': data.price,
+                'location': data.location
+            }
+            data.title = generate_property_title(property_dict)
                 
         return data
         
