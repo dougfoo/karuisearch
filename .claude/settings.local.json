@@ -16,8 +16,17 @@
       "Bash(timeout 60 python:*)",
       "Bash(./runmocks.bat)",
       "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git rm:*)",
       "Bash(git push:*)"
     ],
     "deny": []
+  },
+  "slashCommands": {
+    "runweb": {
+      "description": "Start the React development server",
+      "command": "cd src/frontend && npm run dev"
+    }
   }
 }
