@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException, InvalidSessionIdException
 import logging
 
 from .base_scraper import AbstractPropertyScraper, PropertyData
@@ -28,7 +28,7 @@ class BrowserScraper(AbstractPropertyScraper):
         self.headless = config.get('headless', True)
         
     def setup_browser(self):
-        """Setup Chrome browser with stealth options"""
+        """Setup Chrome browser with stability and stealth options"""
         chrome_options = Options()
         
         # Stealth options to avoid detection
@@ -40,6 +40,24 @@ class BrowserScraper(AbstractPropertyScraper):
         chrome_options.add_argument('--disable-blink-features=AutomationControlled')
         chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
         chrome_options.add_experimental_option('useAutomationExtension', False)
+        
+        # PHASE 1.1: Browser Stability Improvements
+        # Memory and stability optimizations
+        chrome_options.add_argument('--memory-pressure-off')
+        chrome_options.add_argument('--max_old_space_size=8192')  # 8GB memory limit
+        chrome_options.add_argument('--disable-gpu-sandbox')
+        chrome_options.add_argument('--no-first-run')
+        chrome_options.add_argument('--disable-default-apps')
+        chrome_options.add_argument('--disable-background-timer-throttling')
+        chrome_options.add_argument('--disable-backgrounding-occluded-windows')
+        chrome_options.add_argument('--disable-features=TranslateUI')
+        chrome_options.add_argument('--disable-ipc-flooding-protection')
+        
+        # Additional stability flags
+        chrome_options.add_argument('--disable-crash-reporter')
+        chrome_options.add_argument('--disable-in-process-stack-traces')
+        chrome_options.add_argument('--disable-logging')
+        chrome_options.add_argument('--log-level=3')  # Suppress console logs
         
         # Mimic real browser
         chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
@@ -208,6 +226,72 @@ class BrowserScraper(AbstractPropertyScraper):
         except Exception as e:
             logger.error(f"Failed to get page source: {e}")
             return ""
+    
+    # PHASE 1.2: Enhanced Error Recovery Methods
+    def is_browser_crashed(self) -> bool:
+        """Check if browser/tab has crashed"""
+        if not self.driver:
+            return True
+            
+        try:
+            # Try to get current URL - this will fail if tab crashed
+            _ = self.driver.current_url
+            return False
+        except (WebDriverException, InvalidSessionIdException) as e:
+            if "tab crashed" in str(e).lower() or "session deleted" in str(e).lower():
+                logger.warning(f"Browser crash detected: {e}")
+                return True
+            return False
+        except Exception:
+            return False
+    
+    def recover_from_crash(self) -> bool:
+        """Attempt to recover from browser crash by restarting"""
+        logger.info("Attempting to recover from browser crash...")
+        
+        try:
+            # Close existing browser
+            self.close_browser()
+            
+            # Wait before restart
+            time.sleep(2)
+            
+            # Setup new browser
+            success = self.setup_browser()
+            if success:
+                logger.info("Browser recovery successful")
+                return True
+            else:
+                logger.error("Browser recovery failed")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Error during browser recovery: {e}")
+            return False
+    
+    def safe_execute_with_recovery(self, func, *args, max_retries: int = 2, **kwargs):
+        """Execute function with automatic crash recovery"""
+        for attempt in range(max_retries + 1):
+            try:
+                # Check if browser is crashed before execution
+                if self.is_browser_crashed():
+                    if not self.recover_from_crash():
+                        raise WebDriverException("Failed to recover from crash")
+                
+                # Execute the function
+                return func(*args, **kwargs)
+                
+            except (WebDriverException, InvalidSessionIdException) as e:
+                if "tab crashed" in str(e).lower():
+                    logger.warning(f"Tab crashed during execution (attempt {attempt + 1}/{max_retries + 1})")
+                    if attempt < max_retries:
+                        if self.recover_from_crash():
+                            continue
+                    raise e
+                else:
+                    raise e
+                    
+        return None
             
     def extract_text_safely(self, element) -> str:
         """Safely extract text from a web element"""

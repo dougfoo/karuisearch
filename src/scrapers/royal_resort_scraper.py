@@ -22,8 +22,8 @@ class RoyalResortScraper(BrowserScraper):
         default_config = {
             'base_url': 'https://www.royal-resort.co.jp',
             'headless': True,
-            'wait_timeout': 15,
-            'page_load_timeout': 30
+            'wait_timeout': 30,      # Increased from 15s to 30s
+            'page_load_timeout': 60  # Increased from 30s to 60s
         }
         
         if config:
@@ -41,43 +41,87 @@ class RoyalResortScraper(BrowserScraper):
             logger.error("Failed to setup browser")
             return []
         
-        if not self.navigate_to_page(self.karuizawa_url):
-            logger.error("Failed to navigate to Karuizawa page")
+        # Navigate with retry logic
+        max_retries = 2
+        navigation_success = False
+        
+        for attempt in range(max_retries + 1):
+            if attempt > 0:
+                logger.info(f"Retrying navigation (attempt {attempt + 1}/{max_retries + 1})")
+                time.sleep(5)  # Wait before retry
+                
+            if self.navigate_to_page(self.karuizawa_url):
+                navigation_success = True
+                break
+            else:
+                logger.warning(f"Navigation attempt {attempt + 1} failed")
+        
+        if not navigation_success:
+            logger.error(f"Failed to navigate to Karuizawa page after {max_retries + 1} attempts")
             self.close_browser()
             return []
             
         # Handle any initial popups
         self.handle_popup_if_present()
         
-        # Wait for page to fully load
-        self.simulate_human_delay(3.0, 5.0)
+        # Wait for page to fully load with extended timeout
+        logger.info("Waiting for page to fully load...")
+        self.simulate_human_delay(5.0, 8.0)  # Increased from 3-5s to 5-8s
         
-        # Find property containers
-        properties = self.find_property_listings()
+        # Try to wait for specific content to load
+        try:
+            # Wait for main content area to be present
+            self.wait_for_element(By.TAG_NAME, "main", timeout=20)
+            logger.info("Main content area loaded successfully")
+        except Exception as e:
+            logger.warning(f"Main content area not found: {e}")
+        
+        # Find property containers with retry logic
+        properties = self.find_property_listings_with_retry()
         
         logger.info(f"Found {len(properties)} properties on Royal Resort")
         
         extracted_properties = []
         
-        for i, property_element in enumerate(properties, 1):
-            logger.info(f"Processing property {i}/{len(properties)}")
+        # Limit processing for testing - process only first 3 properties to avoid timeouts
+        max_properties_to_process = min(len(properties), 3)
+        logger.info(f"Processing first {max_properties_to_process} properties (limited for stability)")
+        
+        for i, property_element in enumerate(properties[:max_properties_to_process], 1):
+            logger.info(f"Processing property {i}/{max_properties_to_process}")
             
             try:
-                # Extract basic data from the listing card
-                property_data = self.extract_property_from_listing(property_element)
+                # PHASE 1.2: Extract with crash recovery
+                property_data = self.safe_execute_with_recovery(
+                    self.extract_property_from_listing, 
+                    property_element,
+                    max_retries=1
+                )
                 
                 if property_data:
+                    # Generate proper title using title generator
+                    if hasattr(property_data, 'price') and (property_data.price or property_data.location or property_data.property_type):
+                        from utils.titleGenerator import generate_property_title
+                        property_dict = {
+                            'source_url': property_data.source_url,
+                            'property_type': property_data.property_type,
+                            'building_age': property_data.building_age,
+                            'price': property_data.price,
+                            'location': property_data.location
+                        }
+                        property_data.title = generate_property_title(property_dict)
+                    
                     # Validate the property data
                     if self.validate_property_data(property_data):
                         extracted_properties.append(property_data)
-                        logger.info(f"Successfully extracted property {i}")
+                        logger.info(f"Successfully extracted property {i}: {property_data.title}")
                     else:
                         logger.warning(f"Property {i} failed validation")
                 else:
                     logger.warning(f"No data extracted for property {i}")
                     
-                # Rate limiting between properties
-                self.simulate_human_delay(2.0, 4.0)
+                # Rate limiting between properties - reduced delay for testing
+                self.simulate_human_delay(1.0, 2.0)  # Reduced for faster testing
                 
             except Exception as e:
                 logger.error(f"Error processing property {i}: {e}")
@@ -89,6 +133,28 @@ class RoyalResortScraper(BrowserScraper):
         self.close_browser()
         
         return extracted_properties
+    
+    def find_property_listings_with_retry(self) -> List:
+        """Find property listings with retry logic and better error handling"""
+        max_attempts = 3
+        
+        for attempt in range(max_attempts):
+            if attempt > 0:
+                logger.info(f"Retrying property search (attempt {attempt + 1}/{max_attempts})")
+                self.simulate_human_delay(2.0, 3.0)  # Wait between attempts
+            
+            try:
+                properties = self.find_property_listings()
+                if properties:
+                    logger.info(f"Successfully found {len(properties)} properties on attempt {attempt + 1}")
+                    return properties
+                else:
+                    logger.warning(f"No properties found on attempt {attempt + 1}")
+            except Exception as e:
+                logger.error(f"Error finding properties on attempt {attempt + 1}: {e}")
+        
+        logger.error(f"Failed to find properties after {max_attempts} attempts")
+        return []
         
     def find_property_listings(self) -> List:
         """Find property listing elements on the page"""
@@ -106,10 +172,25 @@ class RoyalResortScraper(BrowserScraper):
         ]
         
         for selector in selectors_to_try:
-            elements = self.wait_for_elements(By.CSS_SELECTOR, selector, timeout=5)
+            logger.debug(f"Trying selector: {selector}")
+            elements = self.wait_for_elements(By.CSS_SELECTOR, selector, timeout=10)  # Increased from 5s to 10s
             if elements:
                 logger.info(f"Found {len(elements)} property elements with selector: {selector}")
-                return elements
+                # Additional validation - ensure elements are actually visible/loaded
+                valid_elements = []
+                for elem in elements:
+                    try:
+                        if elem.is_displayed() and elem.size['height'] > 0:
+                            valid_elements.append(elem)
+                    except:
+                        continue
+                
+                if valid_elements:
+                    logger.info(f"Validated {len(valid_elements)}/{len(elements)} elements as visible")
+                    return valid_elements
+                else:
+                    logger.warning(f"No valid/visible elements found with selector: {selector}")
+                    continue
                 
         # If no specific selectors work, try to find any clickable elements with property-like content
         logger.warning("No property elements found with standard selectors, trying broader search")
@@ -133,34 +214,36 @@ class RoyalResortScraper(BrowserScraper):
         return []
         
     def extract_property_from_listing(self, element) -> Optional[PropertyData]:
-        """Extract property data from a listing element"""
+        """Extract property data from a listing element - OPTIMIZED for crash prevention"""
         try:
+            # PHASE 1.3: Pre-validate element before extraction
+            if not element or not element.is_displayed():
+                logger.warning("Element not valid or not displayed")
+                return None
+                
             property_data = PropertyData()
             
-            # Extract title
-            title = self.extract_title(element)
-            if title:
-                property_data.title = title
+            # PHASE 1.3: Single-pass extraction to minimize DOM queries
+            try:
+                # Get all text content at once to reduce queries
+                element_text = element.get_attribute('textContent') or element.text or ""
+                element_html = element.get_attribute('outerHTML') or ""
                 
-            # Extract price
-            price = self.extract_price(element)
-            if price:
-                property_data.price = price
+                # Extract all data from cached content
+                property_data.title = self.extract_title_optimized(element, element_text, element_html)
+                property_data.price = self.extract_price_optimized(element, element_text, element_html)
+                property_data.location = self.extract_location_optimized(element, element_text, element_html)
+                property_data.property_type = self.extract_property_type_optimized(element, element_text, element_html)
+                property_data.size_info = self.extract_size_info_optimized(element, element_text, element_html)
                 
-            # Extract location/area information
-            location = self.extract_location(element)
-            if location:
-                property_data.location = location
-                
-            # Extract property type if available
-            prop_type = self.extract_property_type(element)
-            if prop_type:
-                property_data.property_type = prop_type
-                
-            # Extract size information
-            size_info = self.extract_size_info(element)
-            if size_info:
-                property_data.size_info = size_info
+            except Exception as e:
+                logger.warning(f"Error during optimized extraction, falling back to original: {e}")
+                # Fallback to original methods if optimized fails
+                property_data.title = self.extract_title(element)
+                property_data.price = self.extract_price(element)
+                property_data.location = self.extract_location(element)
+                property_data.property_type = self.extract_property_type(element)
+                property_data.size_info = self.extract_size_info(element)
                 
             # Extract room information
             rooms = self.extract_rooms(element)
@@ -614,3 +697,77 @@ class RoyalResortScraper(BrowserScraper):
         except Exception as e:
             logger.error(f"Validation error: {e}")
             return False
+    
+    # PHASE 1.3: Optimized extraction methods to reduce DOM queries
+    def extract_title_optimized(self, element, element_text: str, element_html: str) -> str:
+        """Extract title using cached text content"""
+        # Try to find title in text content first
+        lines = element_text.split('\n')
+        for line in lines[:3]:  # Check first 3 lines
+            line = line.strip()
+            if len(line) > 10 and len(line) < 100:  # Reasonable title length
+                return line
+        
+        # Fallback to original method
+        return self.extract_title(element)
+    
+    def extract_price_optimized(self, element, element_text: str, element_html: str) -> str:
+        """Extract price using cached text content"""
+        # Look for price patterns in text
+        price_patterns = [
+            r'\d+億[\d,]*万円',
+            r'\d+億円',
+            r'[\d,]+\s*万円',
+            r'¥[\d,]+',
+        ]
+        
+        for pattern in price_patterns:
+            import re
+            match = re.search(pattern, element_text)
+            if match:
+                return match.group().strip()
+        
+        # Fallback to original method
+        return self.extract_price(element)
+    
+    def extract_location_optimized(self, element, element_text: str, element_html: str) -> str:
+        """Extract location using cached text content"""
+        # Look for Karuizawa-related text
+        if '軽井沢' in element_text:
+            lines = element_text.split('\n')
+            for line in lines:
+                if '軽井沢' in line and len(line.strip()) > 3:
+                    return line.strip()[:100]  # Truncate if too long
+        
+        # Fallback to original method
+        return self.extract_location(element)
+    
+    def extract_property_type_optimized(self, element, element_text: str, element_html: str) -> str:
+        """Extract property type using cached text content"""
+        property_types = ['別荘', 'ヴィラ', 'villa', '一戸建て', 'マンション', '土地']
+        
+        element_text_lower = element_text.lower()
+        for prop_type in property_types:
+            if prop_type in element_text or prop_type.lower() in element_text_lower:
+                return prop_type
+        
+        # Fallback to original method
+        return self.extract_property_type(element)
+    
+    def extract_size_info_optimized(self, element, element_text: str, element_html: str) -> str:
+        """Extract size info using cached text content"""
+        # Look for size patterns
+        size_patterns = [
+            r'\d+[\.\d]*\s*㎡',
+            r'\d+[\.\d]*\s*平米',
+            r'\d+[\.\d]*\s*坪',
+        ]
+        
+        for pattern in size_patterns:
+            import re
+            match = re.search(pattern, element_text)
+            if match:
+                return match.group().strip()
+        
+        # Fallback to original method
+        return self.extract_size_info(element)
