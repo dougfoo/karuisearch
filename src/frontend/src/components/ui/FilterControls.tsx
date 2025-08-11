@@ -161,7 +161,7 @@ const FilterControls: React.FC<FilterControlsProps> = ({
 
   return (
     <Card sx={{ mb: 3 }} data-testid="filter-controls">
-      <CardContent>
+      <CardContent sx={{ pb: 2, '&:last-child': { pb: 2 } }}>
         {/* Header */}
         <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
           <Typography variant="h6" sx={{ fontWeight: 600 }}>
@@ -200,14 +200,14 @@ const FilterControls: React.FC<FilterControlsProps> = ({
               </InputAdornment>
             ),
           }}
-          sx={{ mb: 2 }}
+          sx={{ mb: 1.5 }}
           disabled={loading}
         />
 
         {/* Quick Filters */}
-        <Grid container spacing={2} sx={{ mb: 2 }}>
+        <Grid container spacing={1.5} sx={{ mb: 1 }}>
           {/* Property Type */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={2.4}>
             <FormControl fullWidth size="small">
               <InputLabel>{t('filters.propertyType')}</InputLabel>
               <Select
@@ -237,7 +237,7 @@ const FilterControls: React.FC<FilterControlsProps> = ({
           </Grid>
 
           {/* Location */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={2.4}>
             <FormControl fullWidth size="small">
               <InputLabel>{t('filters.location')}</InputLabel>
               <Select
@@ -267,7 +267,7 @@ const FilterControls: React.FC<FilterControlsProps> = ({
           </Grid>
 
           {/* Sort */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={2.4}>
             <FormControl fullWidth size="small">
               <InputLabel>{t('filters.sortBy')}</InputLabel>
               <Select
@@ -283,8 +283,38 @@ const FilterControls: React.FC<FilterControlsProps> = ({
             </FormControl>
           </Grid>
 
+          {/* Price Range Quick Access */}
+          <Grid item xs={12} sm={6} md={2.4}>
+            <FormControl fullWidth size="small">
+              <InputLabel>{t('filters.priceRange')}</InputLabel>
+              <Select
+                value=""
+                disabled={loading}
+                displayEmpty
+                renderValue={() => (
+                  <Typography variant="body2" color="text.secondary" noWrap>
+                    {filters.priceRange?.min === 0 && filters.priceRange?.max >= 500000000
+                      ? t('filters.allPrices')
+                      : `¥${(filters.priceRange?.min || 0) / 10000}万 - ¥${(filters.priceRange?.max || 500000000) / 10000}万`
+                    }
+                  </Typography>
+                )}
+              >
+                {priceRanges.map((range, index) => (
+                  <MenuItem 
+                    key={index} 
+                    value={`${range.min}-${range.max}`}
+                    onClick={() => handlePricePresetClick(range.min, range.max)}
+                  >
+                    {range.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+
           {/* Advanced Toggle */}
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={2.4}>
             <Button
               fullWidth
               variant={advancedOpen ? "contained" : "outlined"}

@@ -263,7 +263,11 @@ class RoyalResortScraper(BrowserScraper):
                 # Optionally get more details from the detail page
                 detailed_data = self.get_property_details(detail_url)
                 if detailed_data:
-                    property_data.update_from_dict(detailed_data)
+                    # Update fields from detailed data
+                    if 'building_age' in detailed_data:
+                        property_data.building_age = detailed_data['building_age']
+                    if 'description' in detailed_data:
+                        property_data.description = detailed_data['description']
             else:
                 # Use current page as source
                 property_data.source_url = self.driver.current_url

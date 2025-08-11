@@ -159,116 +159,106 @@ const AllListings: React.FC = () => {
 
         </Box>
 
-        <Grid container spacing={2}>
-          {/* Desktop Filters Sidebar */}
-          {!isMobile && (
-            <Grid item md={3}>
-              <Box sx={{ position: 'sticky', top: 24 }}>
-                <FilterControls
-                  filters={filters}
-                  onFiltersChange={handleFiltersChange}
-                  onClear={handleClearFilters}
-                  resultsCount={properties.length}
-                  loading={isLoading}
-                />
-              </Box>
-            </Grid>
+        {/* Desktop Filters - Top Row */}
+        {!isMobile && (
+          <FilterControls
+            filters={filters}
+            onFiltersChange={handleFiltersChange}
+            onClear={handleClearFilters}
+            resultsCount={properties.length}
+            loading={isLoading}
+          />
+        )}
+
+        {/* Results Header */}
+        <Box 
+          display="flex" 
+          justifyContent="space-between" 
+          alignItems="center" 
+          mb={3}
+          sx={{
+            p: 2,
+            backgroundColor: theme.palette.background.paper,
+            borderRadius: 1,
+            border: `1px solid ${theme.palette.divider}`,
+          }}
+        >
+          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+            {isLoading 
+              ? t('common.loading')
+              : t('allListings.resultsCount', { count: properties.length })
+            }
+          </Typography>
+
+          {/* Active Filters Indicator */}
+          {activeFilterCount > 0 && (
+            <Badge badgeContent={activeFilterCount} color="primary">
+              <TuneIcon color="action" />
+            </Badge>
           )}
+        </Box>
 
-          {/* Main Content */}
-          <Grid item xs={12} md={isMobile ? 12 : 9}>
-            {/* Results Header */}
-            <Box 
-              display="flex" 
-              justifyContent="space-between" 
-              alignItems="center" 
-              mb={3}
-              sx={{
-                p: 2,
-                backgroundColor: theme.palette.background.paper,
-                borderRadius: 1,
-                border: `1px solid ${theme.palette.divider}`,
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                {isLoading 
-                  ? t('common.loading')
-                  : t('allListings.resultsCount', { count: properties.length })
-                }
-              </Typography>
+        {/* Loading State */}
+        {isLoading && properties.length === 0 ? (
+          <LoadingSpinner message={t('common.loadingProperties')} />
+        ) : properties.length === 0 ? (
+          /* Empty State */
+          <EmptyState
+            type="search"
+            title={t('allListings.emptyState.title')}
+            description={t('allListings.emptyState.description')}
+            action={{
+              label: t('allListings.emptyState.action'),
+              onClick: handleClearFilters,
+            }}
+          />
+        ) : (
+          /* Properties Display */
+          <>
+            <PropertyGrid
+              properties={properties}
+              loading={isLoading}
+              error={error?.message || null}
+              onPropertyClick={handlePropertyClick}
+              emptyMessage={t('allListings.noResults')}
+            />
 
-
-              {/* Active Filters Indicator */}
-              {activeFilterCount > 0 && (
-                <Badge badgeContent={activeFilterCount} color="primary">
-                  <TuneIcon color="action" />
-                </Badge>
-              )}
-            </Box>
-
-            {/* Loading State */}
-            {isLoading && properties.length === 0 ? (
-              <LoadingSpinner message={t('common.loadingProperties')} />
-            ) : properties.length === 0 ? (
-              /* Empty State */
-              <EmptyState
-                type="search"
-                title={t('allListings.emptyState.title')}
-                description={t('allListings.emptyState.description')}
-                action={{
-                  label: t('allListings.emptyState.action'),
-                  onClick: handleClearFilters,
-                }}
-              />
-            ) : (
-              /* Properties Display */
-              <>
-                <PropertyGrid
-                  properties={properties}
-                  loading={isLoading}
-                  error={error?.message || null}
-                  onPropertyClick={handlePropertyClick}
-                  emptyMessage={t('allListings.noResults')}
-                />
-
-                {/* Load More Button */}
-                {hasMoreToLoad && (
-                  <Box textAlign="center" sx={{ mt: 4 }}>
-                    <Button
-                      variant="outlined"
-                      size="large"
-                      onClick={handleLoadMore}
-                      disabled={isLoading}
-                      sx={{ minWidth: 200 }}
-                    >
-                      {isLoading 
-                        ? t('common.loading')
-                        : t('allListings.loadMore')
-                      }
-                    </Button>
-                  </Box>
-                )}
-
-                {/* End of Results Indicator */}
-                {!hasMoreToLoad && properties.length > 0 && (
-                  <Box 
-                    textAlign="center" 
-                    sx={{ 
-                      mt: 4, 
-                      py: 2, 
-                      color: 'text.secondary',
-                      borderTop: `1px solid ${theme.palette.divider}`,
-                    }}
-                  >
-                    <Typography variant="body2">
-                      {t('allListings.endOfResults', { count: properties.length })}
-                    </Typography>
-                  </Box>
-                )}
-              </>
+            {/* Load More Button */}
+            {hasMoreToLoad && (
+              <Box textAlign="center" sx={{ mt: 4 }}>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={handleLoadMore}
+                  disabled={isLoading}
+                  sx={{ minWidth: 200 }}
+                >
+                  {isLoading 
+                    ? t('common.loading')
+                    : t('allListings.loadMore')
+                  }
+                </Button>
+              </Box>
             )}
-          </Grid>
-        </Grid>
+
+            {/* End of Results Indicator */}
+            {!hasMoreToLoad && properties.length > 0 && (
+              <Box 
+                textAlign="center" 
+                sx={{ 
+                  mt: 4, 
+                  py: 2, 
+                  color: 'text.secondary',
+                  borderTop: `1px solid ${theme.palette.divider}`,
+                }}
+              >
+                <Typography variant="body2">
+                  {t('allListings.endOfResults', { count: properties.length })}
+                </Typography>
+              </Box>
+            )}
+          </>
+        )}
       </Container>
 
       {/* Mobile Filter FAB */}

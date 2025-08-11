@@ -24,7 +24,10 @@
       "Bash(scripts/runmocks.bat)",
       "Bash(timeout 300 python:*)",
       "Bash(scripts/runweb.bat)",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(./runroyal.bat)",
+      "Bash(call run_scraper_balanced_mock.bat)",
+      "Bash(./run_scraper_balanced_mock.bat)"
     ],
     "deny": []
   },
