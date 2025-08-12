@@ -21,56 +21,29 @@ def create_limited_scraper(scraper, site_name, limit=10):
         return scraper
     
     elif site_name == 'royal_resort':
-        # Limit Royal Resort to 10 properties to avoid timeout
-        original_scrape = scraper.scrape_listings
-        
-        def limited_royal_scrape():
-            print(f"Starting Royal Resort scraping (limited to {limit} properties)")
-            
-            if not scraper.setup_browser():
-                print("Failed to setup browser")
-                return []
-            
-            if not scraper.navigate_to_page(scraper.karuizawa_url):
-                print("Failed to navigate")
-                scraper.close_browser()
-                return []
-            
-            # Find properties but limit processing
-            properties = scraper.find_property_listings()
-            total_found = len(properties)
-            properties = properties[:limit]
-            print(f"Found {total_found} properties, processing first {len(properties)}")
-            
-            extracted = []
-            for i, prop_element in enumerate(properties, 1):
-                print(f"  Processing Royal Resort property {i}/{len(properties)}")
-                try:
-                    prop_data = scraper.extract_property_from_listing(prop_element)
-                    if prop_data and scraper.validate_property_data(prop_data):
-                        # Generate consistent title
-                        prop_data.title = generate_property_title(
-                            source="Royal Resort",
-                            property_type=prop_data.property_type or "別荘",
-                            building_age=prop_data.building_age or "不明",
-                            price=prop_data.price,
-                            location=prop_data.location
-                        )
-                        extracted.append(prop_data)
-                        print(f"    + Extracted: {prop_data.title[:60]}...")
-                    scraper.simulate_human_delay(1.0, 2.0)  # Faster for balanced run
-                except Exception as e:
-                    print(f"    - Error: {e}")
-                    continue
-            
-            scraper.close_browser()
-            return extracted
-        
-        scraper.scrape_listings = limited_royal_scrape
+        # Skip Royal Resort for now due to stale element issues
+        # We'll use the standard scraper which will likely return 0 results
+        # but won't crash the entire system
         return scraper
     
     elif site_name == 'besso_navi':
         # Besso Navi is already reasonably fast with HTTP
+        return scraper
+    
+    elif site_name == 'resort_innovation':
+        # Resort Innovation is HTTP-based and reasonably fast
+        return scraper
+        
+    elif site_name == 'tokyu_resort':
+        # Tokyu Resort uses BrowserScraper but is optimized for performance
+        return scraper
+        
+    elif site_name == 'seibu_real_estate':
+        # Seibu Real Estate is HTTP-based and reasonably fast
+        return scraper
+    
+    elif site_name == 'resort_home':
+        # Resort Home is HTTP-based SimpleScraper, reasonably fast
         return scraper
     
     return scraper
@@ -87,11 +60,15 @@ def run_balanced_scrape(write_mock=False):
     all_properties = []
     results_summary = {}
     
-    sites = ['mitsui', 'royal_resort', 'besso_navi']
+    sites = ['mitsui', 'royal_resort', 'besso_navi', 'resort_innovation', 'tokyu_resort', 'seibu_real_estate', 'resort_home']
     site_names = {
         'mitsui': 'Mitsui no Mori',
         'royal_resort': 'Royal Resort Karuizawa', 
-        'besso_navi': 'Besso Navi'
+        'besso_navi': 'Besso Navi',
+        'resort_innovation': 'Resort Innovation',
+        'tokyu_resort': 'Tokyu Resort Karuizawa',
+        'seibu_real_estate': 'Seibu Real Estate Karuizawa',
+        'resort_home': 'Resort Home Karuizawa'
     }
     
     for site in sites:

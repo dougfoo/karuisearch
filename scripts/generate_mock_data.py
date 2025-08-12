@@ -101,6 +101,24 @@ def add_fallback_properties(site_key: str, existing_count: int, target_count: in
             'name': '別荘ナビ',
             'type': '別荘',
             'location_prefix': '軽井沢町'
+        },
+        'resort_innovation': {
+            'base_url': 'https://www.resortinnovation.com',
+            'name': 'リゾートイノベーション',
+            'type': 'リゾート物件',
+            'location_prefix': '軽井沢町'
+        },
+        'tokyu_resort': {
+            'base_url': 'https://www.tokyu-resort.co.jp',
+            'name': '東急リゾート',
+            'type': 'リゾートコミュニティ',
+            'location_prefix': '軽井沢町'
+        },
+        'seibu_real_estate': {
+            'base_url': 'https://resort.seiburealestate-pm.co.jp',
+            'name': '西武不動産',
+            'type': '管理物件',
+            'location_prefix': '軽井沢町'
         }
     }
     
@@ -149,7 +167,7 @@ def scrape_all_sites() -> List[Dict[str, Any]]:
     factory = ScraperFactory()
     all_properties = []
     
-    sites = ['mitsui', 'royal_resort', 'besso_navi']
+    sites = ['mitsui', 'royal_resort', 'besso_navi', 'resort_innovation', 'tokyu_resort', 'seibu_real_estate']
     target_per_site = 10
     
     for site_key in sites:

@@ -9,12 +9,16 @@ echo This will scrape and save to mock data format:
 echo   - Mitsui no Mori: up to 10 properties
 echo   - Royal Resort: up to 10 properties  
 echo   - Besso Navi: up to 10 properties
+echo   - Resort Innovation: up to 10 properties
+echo   - Tokyu Resort: up to 10 properties
+echo   - Seibu Real Estate: up to 10 properties
+echo   - Resort Home: up to 10 properties
 echo.
 echo Output files:
 echo   - src/frontend/src/data/mockProperties.json
 echo   - src/frontend/src/data/mockWeeklyData.json
 echo.
-echo Estimated time: 3-5 minutes
+echo Estimated time: 5-8 minutes
 echo.
 pause
 

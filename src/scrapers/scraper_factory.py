@@ -10,6 +10,10 @@ from .base_scraper import AbstractPropertyScraper, PropertyData
 from .mitsui_scraper import MitsuiNoMoriScraper
 from .royal_resort_scraper import RoyalResortScraper  
 from .besso_navi_fixed_scraper import BessoNaviFixedScraper
+from .resort_innovation_scraper import ResortInnovationScraper
+from .tokyu_resort_browser_scraper import TokyuResortBrowserScraper
+from .seibu_real_estate_scraper import SeibuRealEstateScraper
+from .resort_home_scraper import ResortHomeScraper
 
 logger = logging.getLogger(__name__)
 
@@ -38,6 +42,34 @@ class ScraperFactory:
             'type': 'simple',
             'priority': 2,
             'description': 'Form-based vacation home search (Fixed version)'
+        },
+        'resort_innovation': {
+            'class': ResortInnovationScraper,
+            'name': 'Resort Innovation',
+            'type': 'simple',
+            'priority': 4,
+            'description': 'Resort investment properties and luxury listings'
+        },
+        'tokyu_resort': {
+            'class': TokyuResortBrowserScraper,
+            'name': 'Tokyu Resort Karuizawa',
+            'type': 'browser',
+            'priority': 5,
+            'description': 'Tokyu-developed resort community properties (JavaScript-rendered)'
+        },
+        'seibu_real_estate': {
+            'class': SeibuRealEstateScraper,
+            'name': 'Seibu Real Estate Karuizawa',
+            'type': 'simple',
+            'priority': 6,
+            'description': 'Seibu-managed resort properties and rental management'
+        },
+        'resort_home': {
+            'class': ResortHomeScraper,
+            'name': 'Resort Home Karuizawa',
+            'type': 'simple',
+            'priority': 7,
+            'description': 'Karuizawa-focused real estate with area-based search'
         }
     }
     
